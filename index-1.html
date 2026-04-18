@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pramod Jadhav | AI SOC Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060d1a;
+    --surface: #0d1b2e;
+    --card: #111e33;
+    --accent: #00d4ff;
+    --accent2: #0ef0a0;
+    --text: #e2eaf4;
+    --muted: #7a90a8;
+    --border: rgba(0,212,255,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 5%;
+    background: rgba(6,13,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Space Mono', monospace; font-size: 14px; color: var(--accent); letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 1px; transition: color 0.2s; font-family: 'Space Mono', monospace; }
+  .nav-links a:hover { color: var(--accent); }
+
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  #hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    animation: gridPulse 8s ease-in-out infinite;
+  }
+  @keyframes gridPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+  .hero-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+  .hero-photo {
+    width: 150px; height: 150px; border-radius: 50%;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 40px rgba(0,212,255,0.3);
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #1e3a8a, #0ea5e9);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px;
+    overflow: hidden;
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .hero-text { max-width: 620px; }
+  .hero-tag {
+    display: inline-block; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px;
+    color: var(--accent); text-transform: uppercase; border: 1px solid var(--accent);
+    padding: 5px 12px; border-radius: 2px; margin-bottom: 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+  h1 { font-size: clamp(42px, 7vw, 76px); font-weight: 800; line-height: 1; letter-spacing: -2px; animation: fadeUp 0.6s 0.1s ease both; }
+  h1 span { color: var(--accent); }
+  .hero-sub { margin-top: 16px; font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 480px; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-meta { margin-top: 12px; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent2); letter-spacing: 1px; animation: fadeUp 0.6s 0.25s ease both; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary { padding: 13px 28px; background: var(--accent); color: #060d1a; font-weight: 700; font-size: 13px; text-decoration: none; border-radius: 4px; letter-spacing: 1px; transition: transform 0.2s, box-shadow 0.2s; font-family: 'Space Mono', monospace; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.4); }
+  .btn-outline { padding: 13px 28px; background: transparent; color: var(--text); font-weight: 600; font-size: 13px; text-decoration: none; border-radius: 4px; border: 1px solid var(--border); letter-spacing: 1px; transition: border-color 0.2s, color 0.2s; font-family: 'Space Mono', monospace; }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .stats-bar { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; justify-content: center; flex-wrap: wrap; }
+  .stat { padding: 28px 48px; text-align: center; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 36px; font-weight: 800; color: var(--accent); font-family: 'Space Mono', monospace; }
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; }
+
+  section { padding: 90px 5%; max-width: 1000px; margin: 0 auto; }
+  .section-title { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+  h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -1px; margin-bottom: 40px; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+  .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-icon { font-size: 28px; margin-bottom: 12px; }
+  .skill-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .skill-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 28px; transition: border-color 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; gap: 12px; }
+  .project-card:hover { border-color: var(--accent2); box-shadow: 0 0 30px rgba(14,240,160,0.08); }
+  .project-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--accent2); text-transform: uppercase; background: rgba(14,240,160,0.08); padding: 3px 8px; border-radius: 2px; width: fit-content; }
+  .project-card h3 { font-size: 18px; font-weight: 700; }
+  .project-card p { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; }
+  .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .project-link { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; color: var(--accent); text-decoration: none; border: 1px solid var(--border); padding: 6px 12px; border-radius: 3px; transition: background 0.2s, border-color 0.2s; }
+  .project-link:hover { background: rgba(0,212,255,0.08); border-color: var(--accent); }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; text-decoration: none; color: var(--text); display: flex; align-items: center; gap: 16px; transition: border-color 0.2s, transform 0.2s; }
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .contact-icon { font-size: 24px; }
+  .contact-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; font-family: 'Space Mono', monospace; }
+  .contact-value { font-size: 14px; font-weight: 600; margin-top: 3px; }
+
+  footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border); font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); }
+  footer span { color: var(--accent); }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-inner { flex-direction: column; text-align: center; }
+    .hero-btns { justify-content: center; }
+    .stat { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PJ // SOC</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <!-- To add your photo: replace the emoji below with <img src="photo.jpg" alt="Pramod Jadhav"> -->
+    <div class="hero-photo">🛡️</div>
+    <div class="hero-text">
+      <div class="hero-tag">Available for Opportunities</div>
+      <h1>Pramod<br><span>Jadhav</span></h1>
+      <p class="hero-sub">AI-Powered SOC Analyst bridging 12+ years of Security Operations with Machine Learning to build next-generation threat detection systems.</p>
+      <p class="hero-meta">📍 India &nbsp;|&nbsp; Cybersecurity + Python + AI/ML</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="resume.pdf" download>⬇ Download Resume</a>
+        <a class="btn-outline" href="#projects">View Projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years in SOC</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">AI/ML Projects</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Threat Focused</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Learning Mode</div></div>
+</div>
+
+<section id="about">
+  <p class="section-title">Who I Am</p>
+  <h2>About Me</h2>
+  <div class="reveal">
+    <p style="font-size:16px;line-height:1.9;color:var(--muted);max-width:680px;">With over 12 years deep in Security Operations Centers — hunting threats, responding to incidents, and building detection logic — I'm now channeling that expertise into the AI era. I build Python-based ML systems that turn raw security logs into actionable intelligence, automating what used to take analysts hours.</p>
+    <p style="font-size:16px;line-height:1.9;color:var(--muted);max-width:680px;margin-top:16px;">I combine the battle-tested instincts of a seasoned SOC analyst with modern data science skills to build tools that actually work in production environments.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <p class="section-title">What I Do</p>
+  <h2>Skills & Expertise</h2>
+  <div class="skills-grid reveal">
+    <div class="skill-card"><div class="skill-icon">🔍</div><div class="skill-title">SOC Operations</div><div class="skill-desc">SIEM platforms, Incident Response, Alert Triage, Threat Hunting across enterprise environments.</div></div>
+    <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-title">Python & Data Science</div><div class="skill-desc">Pandas, NumPy, Scikit-learn, Jupyter. Building data pipelines for security analytics.</div></div>
+    <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-title">Machine Learning</div><div class="skill-desc">Anomaly detection models, classification algorithms, feature engineering on log data.</div></div>
+    <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-title">Log Analysis</div><div class="skill-desc">Parsing, normalizing, and extracting signals from firewall, auth, and endpoint logs at scale.</div></div>
+    <div class="skill-card"><div class="skill-icon">🛡️</div><div class="skill-title">Threat Detection</div><div class="skill-desc">Writing detection rules, building correlation logic, reducing false positives with ML.</div></div>
+    <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-title">Security Automation</div><div class="skill-desc">SOAR playbooks, Python scripts for automated enrichment, alert deduplication, and triage.</div></div>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-title">What I've Built</p>
+  <h2>Projects</h2>
+  <div class="projects-grid reveal">
+    <div class="project-card">
+      <span class="project-tag">Machine Learning</span>
+      <h3>Security Log Anomaly Detection</h3>
+      <p>Detects unusual login patterns and access anomalies in authentication logs using Isolation Forest and statistical baseline modeling. Reduces analyst triage time significantly.</p>
+      <div class="project-links">
+        <!-- UPDATE: replace with your actual GitHub repo URL -->
+        <a class="project-link" href="https://github.com/pramodjadhav/log-anomaly-detection" target="_blank">⬡ GitHub</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">NLP / Classification</span>
+      <h3>PII Detection System</h3>
+      <p>Identifies sensitive data (emails, phone numbers, Aadhaar, PAN) in unstructured text using regex patterns and a fine-tuned classification model. Built for DLP use cases.</p>
+      <div class="project-links">
+        <!-- UPDATE: replace with your actual GitHub repo URL -->
+        <a class="project-link" href="https://github.com/pramodjadhav/pii-detection" target="_blank">⬡ GitHub</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Coming Soon</span>
+      <h3>Next Project</h3>
+      <p>Always building. Next project in progress — check GitHub for updates or reach out to collaborate on AI-powered security tools.</p>
+      <div class="project-links">
+        <a class="project-link" href="https://github.com/pramodjadhav" target="_blank">⬡ All on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-title">Get In Touch</p>
+  <h2>Contact</h2>
+  <div class="contact-grid reveal">
+    <a class="contact-card" href="mailto:pramodj551@gmail.com">
+      <div class="contact-icon">✉️</div>
+      <div><div class="contact-label">Email</div><div class="contact-value">pramodj551@gmail.com</div></div>
+    </a>
+    <a class="contact-card" href="https://linkedin.com/in/pramod-jadhav" target="_blank">
+      <div class="contact-icon">💼</div>
+      <div><div class="contact-label">LinkedIn</div><div class="contact-value">pramod-jadhav</div></div>
+    </a>
+    <a class="contact-card" href="https://github.com/pramodjadhav" target="_blank">
+      <div class="contact-icon">⬡</div>
+      <div><div class="contact-label">GitHub</div><div class="contact-value">pramodjadhav</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Built by <span>Pramod Jadhav</span> · AI SOC Analyst · © 2026</p>
+  <p style="margin-top:8px;font-size:11px;">Open to cybersecurity & AI roles</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
