@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pramod Jadhav | AI SOC Analyst & Cybersecurity Engineer</title>
+<meta name="description" content="AI-powered cybersecurity portfolio — 12+ years SOC experience, ML threat detection, real-time anomaly detection systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM — CYBER NOIR PALETTE
+═══════════════════════════════════════════════════ */
+:root {
+  --bg:       #030a12;
+  --bg2:      #071524;
+  --surf:     #0a1e30;
+  --card:     #0d2035;
+  --card2:    #102540;
+  --border:   rgba(0,220,255,0.10);
+  --border2:  rgba(0,220,255,0.20);
+
+  --cyan:     #00dcff;
+  --green:    #00ff9d;
+  --orange:   #ff7043;
+  --red:      #ff3d5a;
+  --purple:   #a78bfa;
+
+  --glow-c:   rgba(0,220,255,0.15);
+  --glow-g:   rgba(0,255,157,0.12);
+  --glow-o:   rgba(255,112,67,0.12);
+
+  --txt:      #d0e8f5;
+  --txt2:     #7a9eb8;
+  --txt3:     #3d5e78;
+
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'Syne', sans-serif;
+
+  --radius:   12px;
+  --radius-sm:6px;
+}
+
+/* Light theme */
+body.light {
+  --bg: #f0f6ff; --bg2: #e4eff8; --surf: #ffffff; --card: #ffffff; --card2: #f5f9ff;
+  --border: rgba(0,100,200,0.12); --border2: rgba(0,100,200,0.22);
+  --cyan: #0066cc; --green: #00875a; --orange: #c84b1a; --red: #cc1133;
+  --glow-c: rgba(0,100,200,0.10); --glow-g: rgba(0,135,90,0.10);
+  --txt: #142030; --txt2: #4a6a88; --txt3: #9abacc;
+}
+
+/* ═══════════ RESET & BASE ═══════════ */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth; font-size:16px }
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar { width:3px }
+::-webkit-scrollbar-track { background:var(--bg) }
+::-webkit-scrollbar-thumb { background:var(--cyan); border-radius:2px }
+
+/* ═══════════ SCANLINE OVERLAY ═══════════ */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:1000; pointer-events:none;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ═══════════ NOISE TEXTURE ═══════════ */
+body::after {
+  content:'';
+  position:fixed; inset:0; z-index:999; pointer-events:none;
+  opacity:0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ═══════════ NAVIGATION ═══════════ */
+#nav {
+  position:fixed; top:0; width:100%; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 5%;
+  height:64px;
+  background:rgba(3,10,18,0.88);
+  backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  transition:all 0.3s;
+}
+body.light #nav { background:rgba(240,246,255,0.92) }
+.nav-logo {
+  font-family:var(--font-mono); font-size:11px; letter-spacing:4px;
+  color:var(--cyan); text-transform:uppercase;
+  display:flex; align-items:center; gap:10px;
+}
+.nav-logo-dot {
+  width:8px; height:8px; border-radius:50%; background:var(--green);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,255,157,0.5)} 50%{box-shadow:0 0 0 8px rgba(0,255,157,0)} }
+
+.nav-links { display:flex; gap:4px; align-items:center; flex-wrap:wrap }
+.nav-links a {
+  color:var(--txt2); text-decoration:none;
+  font-family:var(--font-mono); font-size:10px; letter-spacing:1.5px;
+  padding:6px 14px; border-radius:var(--radius-sm);
+  border:1px solid transparent; transition:all 0.2s;
+}
+.nav-links a:hover { color:var(--cyan); border-color:var(--border2); background:rgba(0,220,255,0.04) }
+.theme-toggle {
+  background:transparent; border:1px solid var(--border2);
+  color:var(--txt); border-radius:var(--radius-sm);
+  padding:6px 14px; cursor:pointer;
+  font-family:var(--font-mono); font-size:10px;
+  transition:all 0.2s;
+}
+.theme-toggle:hover { border-color:var(--cyan); color:var(--cyan) }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px }
+.hamburger span { width:22px; height:2px; background:var(--txt); border-radius:1px; transition:all 0.3s }
+
+/* ═══════════ HERO ═══════════ */
+#hero {
+  min-height:100vh; display:flex; align-items:center;
+  padding:100px 5% 60px;
+  position:relative; overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 30%, rgba(0,220,255,0.05), transparent),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(0,255,157,0.04), transparent);
+}
+.hero-grid {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 65% 35%, black 30%, transparent 80%);
+  animation:gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+.hero-inner {
+  position:relative; z-index:1;
+  max-width:1100px; margin:0 auto; width:100%;
+  display:grid; grid-template-columns:1fr 340px; gap:80px; align-items:center;
+}
+.hero-text {}
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:9px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--green); border:1px solid rgba(0,255,157,0.25);
+  padding:5px 14px; border-radius:20px; margin-bottom:24px;
+}
+.hero-eyebrow-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--green);
+  animation:blink 1.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+h1.hero-name {
+  font-family:var(--font-head); font-size:clamp(48px,7vw,86px);
+  font-weight:800; line-height:0.92; letter-spacing:-3px;
+  margin-bottom:16px;
+}
+h1.hero-name em { font-style:normal; color:var(--cyan) }
+.hero-title {
+  font-family:var(--font-mono); font-size:14px; color:var(--green);
+  margin-bottom:20px; min-height:22px;
+}
+.cursor { display:inline-block; width:2px; height:1.1em; background:var(--cyan); animation:blink 0.9s infinite; vertical-align:middle; margin-left:1px }
+.hero-desc { font-size:15px; color:var(--txt2); line-height:1.8; max-width:480px; margin-bottom:32px }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px }
+
+.btn-primary {
+  padding:13px 28px; background:var(--cyan); color:#030a12;
+  font-family:var(--font-mono); font-size:11px; font-weight:600; letter-spacing:1.5px;
+  text-decoration:none; border-radius:var(--radius-sm); border:none; cursor:pointer;
+  transition:all 0.25s; display:inline-flex; align-items:center; gap:8px;
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 30px var(--glow-c) }
+.btn-secondary {
+  padding:13px 28px; background:transparent; color:var(--txt);
+  font-family:var(--font-mono); font-size:11px; letter-spacing:1.5px;
+  text-decoration:none; border-radius:var(--radius-sm);
+  border:1px solid var(--border2); cursor:pointer; transition:all 0.25s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn-secondary:hover { border-color:var(--cyan); color:var(--cyan) }
+.btn-ghost {
+  padding:13px 28px; background:transparent; color:var(--green);
+  font-family:var(--font-mono); font-size:11px; letter-spacing:1.5px;
+  text-decoration:none; border-radius:var(--radius-sm);
+  border:1px solid rgba(0,255,157,0.3); cursor:pointer; transition:all 0.25s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn-ghost:hover { border-color:var(--green); box-shadow:0 0 20px var(--glow-g) }
+
+.hero-stats { display:flex; gap:32px; flex-wrap:wrap }
+.hstat { text-align:center }
+.hstat-n { font-family:var(--font-head); font-size:36px; font-weight:800; color:var(--cyan); line-height:1 }
+.hstat-l { font-family:var(--font-mono); font-size:9px; color:var(--txt3); letter-spacing:2px; text-transform:uppercase; margin-top:4px }
+
+/* Hero Right — terminal card */
+.hero-terminal {
+  background:var(--card);
+  border:1px solid var(--border2);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(0,220,255,0.08), 0 24px 60px rgba(0,0,0,0.4);
+}
+.terminal-header {
+  background:var(--bg2);
+  padding:12px 16px;
+  display:flex; align-items:center; gap:8px;
+  border-bottom:1px solid var(--border);
+}
+.t-dot { width:10px; height:10px; border-radius:50% }
+.t-dot.red{background:#ff5f56} .t-dot.yellow{background:#ffbd2e} .t-dot.green{background:#27c93f}
+.t-title { font-family:var(--font-mono); font-size:10px; color:var(--txt3); letter-spacing:2px; margin-left:8px }
+.terminal-body { padding:20px; font-family:var(--font-mono); font-size:12px; line-height:1.9; min-height:260px }
+.t-line { margin-bottom:2px }
+.t-prompt { color:var(--green) }
+.t-cmd { color:var(--txt) }
+.t-out { color:var(--txt2); padding-left:16px }
+.t-ok { color:var(--green) }
+.t-warn { color:var(--orange) }
+.t-key { color:var(--cyan) }
+.t-cursor-blink { animation:blink 1s infinite }
+
+/* ═══════════ STATS BAR ═══════════ */
+.stats-bar {
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.stats-ticker {
+  display:flex; justify-content:center; flex-wrap:wrap;
+}
+.sticker-item {
+  display:flex; align-items:center; gap:16px;
+  padding:24px 40px;
+  border-right:1px solid var(--border);
+}
+.sticker-item:last-child { border-right:none }
+.sticker-num { font-family:var(--font-head); font-size:34px; font-weight:800; color:var(--cyan); line-height:1 }
+.sticker-label { font-family:var(--font-mono); font-size:10px; color:var(--txt3); letter-spacing:2px; text-transform:uppercase; margin-top:2px }
+
+/* ═══════════ SECTION COMMON ═══════════ */
+.section { padding:90px 5%; }
+.section-inner { max-width:1100px; margin:0 auto }
+.sec-label { font-family:var(--font-mono); font-size:9px; letter-spacing:5px; color:var(--cyan); text-transform:uppercase; margin-bottom:10px }
+h2.sec-h { font-family:var(--font-head); font-size:clamp(32px,4.5vw,52px); font-weight:800; letter-spacing:-2px; line-height:1; margin-bottom:48px }
+h2.sec-h em { font-style:normal; color:var(--cyan) }
+
+/* reveal */
+.reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease }
+.reveal.visible { opacity:1; transform:translateY(0) }
+
+/* ═══════════ ABOUT ═══════════ */
+#about { background:var(--bg) }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start }
+.about-text p { font-size:15px; color:var(--txt2); line-height:1.9; margin-bottom:16px }
+.about-text p strong { color:var(--txt) }
+.about-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px }
+.pill {
+  font-family:var(--font-mono); font-size:10px; letter-spacing:1px;
+  padding:5px 14px; border-radius:20px; border:1px solid var(--border2);
+  color:var(--cyan); background:rgba(0,220,255,0.04);
+}
+.about-timeline { display:flex; flex-direction:column; gap:0 }
+.tl-item { display:flex; gap:20px; padding-bottom:32px; position:relative }
+.tl-item:last-child { padding-bottom:0 }
+.tl-left { display:flex; flex-direction:column; align-items:center; width:40px; flex-shrink:0 }
+.tl-dot { width:10px; height:10px; border-radius:50%; background:var(--cyan); border:2px solid var(--bg); box-shadow:0 0 10px var(--cyan); flex-shrink:0; margin-top:5px }
+.tl-line { width:1px; flex:1; background:var(--border2); margin-top:4px }
+.tl-item:last-child .tl-line { display:none }
+.tl-content {}
+.tl-year { font-family:var(--font-mono); font-size:9px; color:var(--cyan); letter-spacing:2px; margin-bottom:4px }
+.tl-title { font-family:var(--font-head); font-size:15px; font-weight:700; margin-bottom:4px }
+.tl-desc { font-size:13px; color:var(--txt2); line-height:1.7 }
+
+/* ═══════════ SKILLS ═══════════ */
+#skills { background:var(--bg2) }
+.skills-layout { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px }
+.skill-cat {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:28px;
+  transition:all 0.3s; position:relative; overflow:hidden;
+}
+.skill-cat::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  transform:scaleX(0); transform-origin:left; transition:transform 0.4s;
+}
+.skill-cat.c1::before { background:linear-gradient(90deg, var(--cyan), var(--green)) }
+.skill-cat.c2::before { background:linear-gradient(90deg, var(--green), var(--purple)) }
+.skill-cat.c3::before { background:linear-gradient(90deg, var(--orange), var(--red)) }
+.skill-cat.c4::before { background:linear-gradient(90deg, var(--purple), var(--cyan)) }
+.skill-cat:hover { border-color:var(--border2); transform:translateY(-3px) }
+.skill-cat:hover::before { transform:scaleX(1) }
+.sk-cat-head { display:flex; align-items:center; gap:12px; margin-bottom:20px }
+.sk-cat-icon { font-size:24px }
+.sk-cat-title { font-family:var(--font-head); font-size:14px; font-weight:700 }
+
+.skill-bar-item { margin-bottom:16px }
+.skill-bar-item:last-child { margin-bottom:0 }
+.sb-row { display:flex; justify-content:space-between; margin-bottom:6px }
+.sb-name { font-family:var(--font-mono); font-size:11px; color:var(--txt2) }
+.sb-pct { font-family:var(--font-mono); font-size:11px; color:var(--cyan) }
+.sb-track {
+  height:4px; background:var(--bg); border-radius:2px; overflow:hidden;
+}
+.sb-fill {
+  height:100%; border-radius:2px;
+  background:linear-gradient(90deg, var(--cyan), var(--green));
+  width:0; transition:width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ═══════════ PROJECTS ═══════════ */
+#projects { background:var(--bg) }
+.projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px }
+.proj-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:30px;
+  display:flex; flex-direction:column; gap:12px;
+  transition:all 0.3s; position:relative; overflow:hidden;
+  cursor:default;
+}
+.proj-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+  transform:scaleX(0); transform-origin:left; transition:transform 0.4s;
+}
+.proj-card.p1::after { background:linear-gradient(90deg, var(--cyan), var(--green)) }
+.proj-card.p2::after { background:linear-gradient(90deg, var(--orange), var(--red)) }
+.proj-card.p3::after { background:linear-gradient(90deg, var(--purple), var(--cyan)) }
+.proj-card:hover { border-color:var(--border2); transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.3) }
+.proj-card:hover::after { transform:scaleX(1) }
+
+.proj-header { display:flex; justify-content:space-between; align-items:flex-start }
+.proj-badge {
+  font-family:var(--font-mono); font-size:8px; letter-spacing:2.5px; text-transform:uppercase;
+  padding:4px 10px; border-radius:3px;
+}
+.pb-hot { color:var(--orange); background:rgba(255,112,67,0.1); border:1px solid rgba(255,112,67,0.3) }
+.pb-ai  { color:var(--purple); background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.3) }
+.pb-ml  { color:var(--green);  background:rgba(0,255,157,0.08); border:1px solid rgba(0,255,157,0.25) }
+
+.proj-icon { font-size:28px }
+.proj-title { font-family:var(--font-head); font-size:18px; font-weight:700; line-height:1.2 }
+.proj-desc { font-size:13px; color:var(--txt2); line-height:1.75; flex:1 }
+.proj-bullets { list-style:none; display:flex; flex-direction:column; gap:6px }
+.proj-bullets li { font-size:12px; color:var(--txt2); display:flex; align-items:flex-start; gap:8px }
+.proj-bullets li::before { content:'▸'; color:var(--cyan); flex-shrink:0; font-size:10px; margin-top:2px }
+.tech-chips { display:flex; flex-wrap:wrap; gap:6px }
+.chip {
+  font-family:var(--font-mono); font-size:9px; color:var(--txt3);
+  border:1px solid var(--border); padding:3px 8px; border-radius:3px;
+  letter-spacing:0.5px;
+}
+.proj-links { display:flex; gap:10px; flex-wrap:wrap; margin-top:4px }
+.proj-link {
+  font-family:var(--font-mono); font-size:10px; color:var(--cyan);
+  text-decoration:none; border:1px solid var(--border2);
+  padding:6px 14px; border-radius:var(--radius-sm);
+  transition:all 0.2s; letter-spacing:0.5px;
+}
+.proj-link:hover { background:rgba(0,220,255,0.08); border-color:var(--cyan) }
+
+/* ═══════════ DEMO ═══════════ */
+#demo { background:var(--bg2) }
+.demo-layout { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start }
+.demo-panel {
+  background:var(--card); border:1px solid var(--border2);
+  border-radius:var(--radius); padding:32px;
+}
+.demo-panel-title { font-family:var(--font-head); font-size:16px; font-weight:700; margin-bottom:24px; display:flex; align-items:center; gap:10px }
+.demo-panel-title span { color:var(--cyan) }
+
+.param-row { margin-bottom:20px }
+.param-label { font-family:var(--font-mono); font-size:10px; color:var(--txt2); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; display:flex; justify-content:space-between }
+.param-label em { font-style:normal; color:var(--cyan) }
+input[type=range] {
+  width:100%; height:4px; background:var(--bg);
+  border-radius:2px; outline:none; cursor:pointer;
+  -webkit-appearance:none; accent-color:var(--cyan);
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; width:14px; height:14px;
+  border-radius:50%; background:var(--cyan);
+  box-shadow:0 0 8px var(--glow-c); cursor:pointer;
+}
+.risk-meter { margin:24px 0 }
+.risk-meter-label { font-family:var(--font-mono); font-size:9px; color:var(--txt3); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; display:flex; justify-content:space-between }
+.risk-track {
+  height:8px; background:var(--bg);
+  border-radius:4px; overflow:hidden; position:relative;
+}
+.risk-fill {
+  height:100%; border-radius:4px; width:0;
+  transition:width 0.6s cubic-bezier(0.4,0,0.2,1), background 0.4s;
+  background:var(--green);
+}
+.risk-score-row { display:flex; align-items:center; gap:16px; margin-top:12px }
+.risk-score-big { font-family:var(--font-head); font-size:52px; font-weight:800; line-height:1; color:var(--green); transition:color 0.3s }
+.risk-score-label { font-family:var(--font-mono); font-size:10px; color:var(--txt3); letter-spacing:1.5px }
+.result-pill {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 20px; border-radius:6px;
+  font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:1px;
+  animation:fadeUp 0.3s ease; margin-top:16px;
+}
+.rp-ok   { color:var(--green);  background:rgba(0,255,157,0.08); border:1px solid rgba(0,255,157,0.3) }
+.rp-warn { color:var(--orange); background:rgba(255,112,67,0.08); border:1px solid rgba(255,112,67,0.3) }
+.rp-crit { color:var(--red);    background:rgba(255,61,90,0.08);  border:1px solid rgba(255,61,90,0.3) }
+@keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+.demo-log-panel { margin-top:24px }
+.demo-log-title { font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--txt3); text-transform:uppercase; margin-bottom:8px }
+.demo-log {
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:var(--radius-sm); padding:14px;
+  font-family:var(--font-mono); font-size:11px;
+  max-height:180px; overflow-y:auto; line-height:1.9;
+}
+.log-line { display:block; border-bottom:1px solid rgba(255,255,255,0.03); padding:2px 0 }
+.log-ok   { color:var(--green) }
+.log-warn { color:var(--orange) }
+.log-crit { color:var(--red) }
+.log-info { color:var(--txt3) }
+
+/* Demo right panel — feature explainer */
+.demo-features { display:flex; flex-direction:column; gap:16px }
+.df-item {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius-sm); padding:18px;
+  display:flex; align-items:flex-start; gap:14px;
+  transition:all 0.25s;
+}
+.df-item:hover { border-color:var(--border2) }
+.df-icon { font-size:20px; flex-shrink:0; margin-top:2px }
+.df-content {}
+.df-title { font-family:var(--font-head); font-size:13px; font-weight:700; margin-bottom:4px }
+.df-desc { font-size:12px; color:var(--txt2); line-height:1.6 }
+
+/* ═══════════ CHATBOT ═══════════ */
+#chat { background:var(--bg) }
+.chat-layout { display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start }
+.chatbot-card {
+  background:var(--card); border:1px solid var(--border2);
+  border-radius:var(--radius); overflow:hidden;
+}
+.chat-header {
+  background:var(--bg2); padding:16px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:14px;
+}
+.chat-avatar {
+  width:38px; height:38px; border-radius:50%;
+  background:linear-gradient(135deg, var(--cyan), var(--green));
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+}
+.chat-agent-name { font-family:var(--font-head); font-size:14px; font-weight:700 }
+.chat-agent-status { font-family:var(--font-mono); font-size:9px; color:var(--green); letter-spacing:1.5px; display:flex; align-items:center; gap:5px }
+.chat-status-dot { width:5px; height:5px; border-radius:50%; background:var(--green); animation:pulse 2s infinite }
+.chat-window {
+  height:380px; overflow-y:auto; padding:20px;
+  display:flex; flex-direction:column; gap:14px;
+  background:var(--bg);
+}
+.chat-msg {
+  max-width:78%; padding:12px 16px; border-radius:10px;
+  font-size:13px; line-height:1.65; animation:fadeUp 0.3s ease;
+}
+.chat-msg.user {
+  align-self:flex-end;
+  background:rgba(0,220,255,0.1); border:1px solid rgba(0,220,255,0.2);
+  border-radius:10px 2px 10px 10px;
+}
+.chat-msg.bot {
+  align-self:flex-start;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:2px 10px 10px 10px;
+}
+.bot-label { font-family:var(--font-mono); font-size:8px; color:var(--cyan); letter-spacing:1.5px; margin-bottom:5px }
+.typing-indicator { display:flex; gap:4px; padding:4px 0 }
+.typing-indicator span {
+  width:6px; height:6px; border-radius:50%; background:var(--cyan);
+  animation:dotBounce 0.8s ease-in-out infinite;
+}
+.typing-indicator span:nth-child(2){animation-delay:0.15s}
+.typing-indicator span:nth-child(3){animation-delay:0.3s}
+@keyframes dotBounce { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
+
+.chat-suggestions { display:flex; gap:8px; flex-wrap:wrap; padding:14px 20px; background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
+.sug { background:transparent; border:1px solid var(--border2); color:var(--txt2); font-family:var(--font-mono); font-size:9px; letter-spacing:0.5px; padding:5px 12px; border-radius:4px; cursor:pointer; transition:all 0.2s }
+.sug:hover { border-color:var(--cyan); color:var(--cyan) }
+.chat-input-row { display:flex; gap:10px; padding:16px 20px }
+.chat-input {
+  flex:1; background:var(--bg); border:1px solid var(--border2);
+  color:var(--txt); border-radius:var(--radius-sm);
+  padding:11px 16px; font-family:var(--font-body); font-size:13px;
+  outline:none; transition:border-color 0.2s;
+}
+.chat-input:focus { border-color:var(--cyan) }
+.chat-send {
+  background:var(--cyan); color:#030a12; border:none;
+  border-radius:var(--radius-sm); padding:11px 20px;
+  font-family:var(--font-mono); font-size:10px; font-weight:700;
+  letter-spacing:1.5px; cursor:pointer; transition:all 0.2s;
+  white-space:nowrap;
+}
+.chat-send:hover { transform:translateY(-1px); box-shadow:0 4px 16px var(--glow-c) }
+.chat-send:disabled { opacity:0.5; cursor:not-allowed }
+
+.chat-info-col { display:flex; flex-direction:column; gap:16px }
+.info-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:24px;
+}
+.info-card h3 { font-family:var(--font-head); font-size:14px; font-weight:700; margin-bottom:14px; color:var(--cyan) }
+.info-item { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; font-size:12px; color:var(--txt2) }
+.info-item:last-child { margin-bottom:0 }
+.info-item span:first-child { font-size:14px; flex-shrink:0 }
+.api-note { font-family:var(--font-mono); font-size:10px; color:var(--txt3); line-height:1.7; margin-top:8px }
+.api-note code { color:var(--cyan); background:var(--bg); padding:2px 6px; border-radius:3px }
+
+/* ═══════════ WHY HIRE ME ═══════════ */
+#hire { background:var(--bg2) }
+.hire-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-bottom:40px }
+.hire-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:28px;
+  transition:all 0.3s; position:relative; overflow:hidden;
+}
+.hire-card:hover { border-color:var(--border2); transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.3) }
+.hire-num { font-family:var(--font-mono); font-size:10px; color:var(--orange); letter-spacing:3px; margin-bottom:10px }
+.hire-card h3 { font-family:var(--font-head); font-size:16px; font-weight:700; margin-bottom:8px }
+.hire-card p { font-size:13px; color:var(--txt2); line-height:1.7 }
+.hire-cta {
+  background:linear-gradient(135deg, rgba(0,220,255,0.08), rgba(0,255,157,0.05));
+  border:1px solid var(--border2); border-radius:var(--radius);
+  padding:36px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;
+}
+.hire-cta-text h3 { font-family:var(--font-head); font-size:26px; font-weight:800; letter-spacing:-1px; margin-bottom:8px }
+.hire-cta-text p { font-size:14px; color:var(--txt2) }
+
+/* ═══════════ CONTACT ═══════════ */
+#contact { background:var(--bg) }
+.contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:40px }
+.contact-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:24px;
+  text-decoration:none; color:var(--txt);
+  display:flex; align-items:center; gap:16px;
+  transition:all 0.25s;
+}
+.contact-card:hover { border-color:var(--cyan); transform:translateY(-2px); box-shadow:0 8px 24px var(--glow-c) }
+.cc-icon-wrap { width:44px; height:44px; border-radius:var(--radius-sm); background:var(--bg); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0 }
+.cc-label { font-family:var(--font-mono); font-size:9px; color:var(--txt3); letter-spacing:1.5px; text-transform:uppercase }
+.cc-val { font-size:13px; font-weight:600; margin-top:3px }
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  text-align:center; padding:40px 5%;
+  border-top:1px solid var(--border);
+  font-family:var(--font-mono); font-size:10px; color:var(--txt3);
+  background:var(--bg2);
+}
+footer strong { color:var(--cyan) }
+
+/* ═══════════ MOBILE NAV MENU ═══════════ */
+.mobile-menu {
+  display:none; position:fixed; top:64px; left:0; right:0; z-index:499;
+  background:rgba(3,10,18,0.97); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:20px; flex-direction:column; gap:4px;
+}
+.mobile-menu.open { display:flex }
+.mobile-menu a {
+  color:var(--txt2); text-decoration:none;
+  font-family:var(--font-mono); font-size:11px; letter-spacing:1.5px;
+  padding:12px 16px; border-radius:var(--radius-sm);
+  border:1px solid transparent; transition:all 0.2s;
+}
+.mobile-menu a:hover { color:var(--cyan); border-color:var(--border2) }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media(max-width:900px) {
+  .hero-inner { grid-template-columns:1fr }
+  .hero-terminal { display:none }
+  .about-grid { grid-template-columns:1fr }
+  .demo-layout { grid-template-columns:1fr }
+  .chat-layout { grid-template-columns:1fr }
+  .chat-info-col { display:none }
+}
+@media(max-width:640px) {
+  .nav-links { display:none }
+  .hamburger { display:flex }
+  .sticker-item { padding:18px 24px }
+  .sticker-num { font-size:26px }
+  h1.hero-name { letter-spacing:-2px }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    PJ // AI·SOC
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#demo">AI Demo</a>
+    <a href="#chat">Chatbot</a>
+    <a href="#hire">Hire Me</a>
+    <a href="#contact">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#demo" onclick="closeMenu()">AI Demo</a>
+  <a href="#chat" onclick="closeMenu()">Chatbot</a>
+  <a href="#hire" onclick="closeMenu()">Hire Me</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        Available for AI SOC & Cybersecurity Roles
+      </div>
+      <h1 class="hero-name">PRAMOD<br><em>JADHAV</em></h1>
+      <div class="hero-title" id="typingEl">&nbsp;<span class="cursor"></span></div>
+      <p class="hero-desc">
+        12+ years of Security Operations expertise, now supercharged with Machine Learning.
+        I build AI systems that detect threats before humans can blink — from log anomaly detection
+        to cloud-native SIEM architecture.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#demo">⚡ Live AI Demo</a>
+        <a class="btn-secondary" href="#chat">🤖 Chat with AI</a>
+        <a class="btn-ghost" href="#" download id="resumeBtn">↓ Resume</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n" data-count="12">0</div><div class="hstat-l">Years SOC</div></div>
+        <div class="hstat"><div class="hstat-n" data-count="3">0</div><div class="hstat-l">AI Projects</div></div>
+        <div class="hstat"><div class="hstat-n" data-count="95">0</div><div class="hstat-l">ML Accuracy%</div></div>
+        <div class="hstat"><div class="hstat-n" data-count="5">0</div><div class="hstat-l">AWS Services</div></div>
+      </div>
+    </div>
+    <!-- Terminal card -->
+    <div class="hero-terminal">
+      <div class="terminal-header">
+        <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
+        <div class="t-title">pramod@soc-ai ~ threat-engine</div>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="t-line"><span class="t-prompt">pramod@soc:~$</span> <span class="t-cmd">python detect.py --live</span></div>
+        <div class="t-line t-out t-ok">✓ Model loaded: IsolationForest v2.1</div>
+        <div class="t-line t-out">→ Ingesting Kafka stream...</div>
+        <div class="t-line t-out t-key">→ Events/sec: <span id="evtCount">0</span></div>
+        <div class="t-line t-out">→ Scanning for anomalies...</div>
+        <div class="t-line t-out t-ok" id="termStatus">✓ All clear — baseline normal</div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">pramod@soc:~$</span> <span class="t-cmd">status --models</span></div>
+        <div class="t-line t-out t-ok">✓ LogisticRegression  acc=93.2%</div>
+        <div class="t-line t-out t-ok">✓ DeepLearning-LSTM   acc=95.8%</div>
+        <div class="t-line t-out t-ok">✓ IsolationForest     f1=0.94</div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">pramod@soc:~$</span> <span class="t-cursor-blink">█</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats-bar">
+  <div class="stats-ticker">
+    <div class="sticker-item">
+      <div><div class="sticker-num">12+</div><div class="sticker-label">Years Experience</div></div>
+    </div>
+    <div class="sticker-item">
+      <div><div class="sticker-num">95%</div><div class="sticker-label">ML Model Accuracy</div></div>
+    </div>
+    <div class="sticker-item">
+      <div><div class="sticker-num">Real‑Time</div><div class="sticker-label">Threat Detection</div></div>
+    </div>
+    <div class="sticker-item">
+      <div><div class="sticker-num">AWS</div><div class="sticker-label">Cloud Architecture</div></div>
+    </div>
+    <div class="sticker-item">
+      <div><div class="sticker-num">AI+SOC</div><div class="sticker-label">Rare Combination</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="sec-label">01 — ABOUT</div>
+    <h2 class="sec-h">The <em>Profile</em></h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm a <strong>Security Operations professional with 12+ years</strong> on the front lines — monitoring surveillance systems, triaging incidents, hunting anomalies, and keeping organisations safe. I've seen every pattern of attack humans throw.</p>
+        <p>Now I'm <strong>weaponising that experience with AI and Machine Learning</strong>. I've built real threat detection pipelines using Kafka, deep learning models, and AWS serverless architecture. I don't just understand security theory — I've lived it, and now I'm automating it.</p>
+        <p>My goal is to <strong>bridge the gap between SOC operations and AI engineering</strong> — a skill combination that's rare, in-demand, and worth hiring for.</p>
+        <div class="about-pills">
+          <span class="pill">SOC Operations</span>
+          <span class="pill">Threat Detection</span>
+          <span class="pill">ML/Deep Learning</span>
+          <span class="pill">Kafka Streaming</span>
+          <span class="pill">AWS Cloud</span>
+          <span class="pill">Python</span>
+          <span class="pill">Incident Response</span>
+          <span class="pill">Log Analysis</span>
+        </div>
+      </div>
+      <div class="about-timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-year">2024 – PRESENT</div>
+            <div class="tl-title">AI/ML Security Engineer (Transition)</div>
+            <div class="tl-desc">Building AI-powered SIEM, threat detection models, and cloud-native security architecture. Self-driven upskilling in Python, TensorFlow, and AWS.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-year">2020 – 2024</div>
+            <div class="tl-title">Senior Security Operations Specialist</div>
+            <div class="tl-desc">Led incident monitoring, threat triage, and real-time surveillance for critical infrastructure. Managed log analysis and coordinated cross-team response.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot" style="background:var(--orange)"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-year">2012 – 2020</div>
+            <div class="tl-title">Security Operations Analyst</div>
+            <div class="tl-desc">Ground-level SOC work — surveillance, real-time incident handling, documentation, and pattern recognition across 8 years of operational experience.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot" style="background:var(--purple)"></div></div>
+          <div class="tl-content">
+            <div class="tl-year">EDUCATION</div>
+            <div class="tl-title">Cybersecurity & AI Certifications</div>
+            <div class="tl-desc">Ongoing — AWS Cloud Practitioner, Python for Data Science, Machine Learning (Coursera/Udemy). Add your formal degree here.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section class="section" id="skills" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="sec-label">02 — SKILLS</div>
+    <h2 class="sec-h"><em>Technical</em> Arsenal</h2>
+    <div class="skills-layout">
+      <div class="skill-cat c1 reveal">
+        <div class="sk-cat-head"><div class="sk-cat-icon">🐍</div><div class="sk-cat-title">Programming & AI/ML</div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Python</span><span class="sb-pct">85%</span></div><div class="sb-track"><div class="sb-fill" data-w="85"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Scikit-learn / ML Models</span><span class="sb-pct">80%</span></div><div class="sb-track"><div class="sb-fill" data-w="80"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">TensorFlow / Deep Learning</span><span class="sb-pct">70%</span></div><div class="sb-track"><div class="sb-fill" data-w="70"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Pandas / NumPy</span><span class="sb-pct">82%</span></div><div class="sb-track"><div class="sb-fill" data-w="82"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">JavaScript / React</span><span class="sb-pct">72%</span></div><div class="sb-track"><div class="sb-fill" data-w="72"></div></div></div>
+      </div>
+      <div class="skill-cat c2 reveal">
+        <div class="sk-cat-head"><div class="sk-cat-icon">☁️</div><div class="sk-cat-title">Cloud & Data Streaming</div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">AWS (Lambda, S3, DynamoDB)</span><span class="sb-pct">75%</span></div><div class="sb-track"><div class="sb-fill" data-w="75"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Apache Kafka</span><span class="sb-pct">72%</span></div><div class="sb-track"><div class="sb-fill" data-w="72"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">AWS Kinesis</span><span class="sb-pct">68%</span></div><div class="sb-track"><div class="sb-fill" data-w="68"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">API Gateway / Node.js</span><span class="sb-pct">70%</span></div><div class="sb-track"><div class="sb-fill" data-w="70"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Docker / CI-CD</span><span class="sb-pct">60%</span></div><div class="sb-track"><div class="sb-fill" data-w="60"></div></div></div>
+      </div>
+      <div class="skill-cat c3 reveal">
+        <div class="sk-cat-head"><div class="sk-cat-icon">🛡️</div><div class="sk-cat-title">Cybersecurity & SOC</div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">SOC Monitoring & Triage</span><span class="sb-pct">95%</span></div><div class="sb-track"><div class="sb-fill" data-w="95"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Incident Response</span><span class="sb-pct">92%</span></div><div class="sb-track"><div class="sb-fill" data-w="92"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Log Analysis / SIEM</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" data-w="90"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Threat Hunting</span><span class="sb-pct">85%</span></div><div class="sb-track"><div class="sb-fill" data-w="85"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Anomaly Detection Ops</span><span class="sb-pct">88%</span></div><div class="sb-track"><div class="sb-fill" data-w="88"></div></div></div>
+      </div>
+      <div class="skill-cat c4 reveal">
+        <div class="sk-cat-head"><div class="sk-cat-icon">⚙️</div><div class="sk-cat-title">Tools & Workflow</div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Git / GitHub</span><span class="sb-pct">78%</span></div><div class="sb-track"><div class="sb-fill" data-w="78"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Jupyter / VS Code</span><span class="sb-pct">85%</span></div><div class="sb-track"><div class="sb-fill" data-w="85"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Postman / REST APIs</span><span class="sb-pct">75%</span></div><div class="sb-track"><div class="sb-fill" data-w="75"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Linux / Shell Scripting</span><span class="sb-pct">72%</span></div><div class="sb-track"><div class="sb-fill" data-w="72"></div></div></div>
+        <div class="skill-bar-item"><div class="sb-row"><span class="sb-name">Splunk / ELK Stack</span><span class="sb-pct">65%</span></div><div class="sb-track"><div class="sb-fill" data-w="65"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="sec-label">03 — PROJECTS</div>
+    <h2 class="sec-h"><em>Built</em> Things</h2>
+    <div class="projects-grid">
+
+      <div class="proj-card p1 reveal">
+        <div class="proj-header">
+          <span class="proj-badge pb-hot">🔥 Flagship</span>
+          <div class="proj-icon">🛡️</div>
+        </div>
+        <div class="proj-title">AI-Powered SIEM System</div>
+        <p class="proj-desc">Cloud-native Security Information & Event Management system with real-time threat detection, ML anomaly classification, and a React monitoring dashboard.</p>
+        <ul class="proj-bullets">
+          <li>Real-time log streaming via Apache Kafka → AWS Kinesis</li>
+          <li>ML + Deep Learning models for anomaly detection (95.8% accuracy)</li>
+          <li>Serverless processing with AWS Lambda; alerts stored in DynamoDB</li>
+          <li>React dashboard for live threat visualization & alert management</li>
+        </ul>
+        <div class="tech-chips">
+          <span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">Kafka</span>
+          <span class="chip">AWS Lambda</span><span class="chip">DynamoDB</span><span class="chip">React</span>
+        </div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">→ GitHub</a>
+          <a href="#demo" class="proj-link">⚡ Live Demo</a>
+        </div>
+      </div>
+
+      <div class="proj-card p2 reveal">
+        <div class="proj-header">
+          <span class="proj-badge pb-ai">🤖 AI Portfolio</span>
+          <div class="proj-icon">💻</div>
+        </div>
+        <div class="proj-title">AI Chatbot Portfolio Website</div>
+        <p class="proj-desc">Full-stack portfolio site (this page!) with a live AI chatbot powered by Claude API, anomaly detection demo, and recruiter-optimized design.</p>
+        <ul class="proj-bullets">
+          <li>Integrated Claude AI chatbot with custom SOC/cybersecurity system prompt</li>
+          <li>Real-time threat scoring demo with interactive parameter controls</li>
+          <li>Dark/light mode, mobile responsive, smooth scroll animations</li>
+          <li>Production-grade HTML/CSS/JS — zero frameworks, zero dependencies</li>
+        </ul>
+        <div class="tech-chips">
+          <span class="chip">HTML/CSS/JS</span><span class="chip">Claude API</span>
+          <span class="chip">Node.js</span><span class="chip">Express</span>
+        </div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">→ GitHub</a>
+          <a href="#chat" class="proj-link">🤖 Try Bot</a>
+        </div>
+      </div>
+
+      <div class="proj-card p3 reveal">
+        <div class="proj-header">
+          <span class="proj-badge pb-ml">🧠 ML Model</span>
+          <div class="proj-icon">📊</div>
+        </div>
+        <div class="proj-title">ML Threat Detection Model</div>
+        <p class="proj-desc">Custom ML pipeline trained on simulated SOC log datasets, comparing classical and deep learning approaches for log-based anomaly classification.</p>
+        <ul class="proj-bullets">
+          <li>Generated 50,000+ synthetic SOC log entries with realistic attack patterns</li>
+          <li>Trained Logistic Regression, Random Forest, LSTM, and Isolation Forest</li>
+          <li>Best model: LSTM — 95.8% accuracy, 0.94 F1 on imbalanced classes</li>
+          <li>Deployed as REST API endpoint; integrated into SIEM dashboard</li>
+        </ul>
+        <div class="tech-chips">
+          <span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span>
+          <span class="chip">Pandas</span><span class="chip">Flask API</span><span class="chip">Jupyter</span>
+        </div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">→ GitHub</a>
+          <a href="#" class="proj-link">📄 Notebook</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI DEMO ═══ -->
+<section class="section" id="demo" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="sec-label">04 — AI DEMO</div>
+    <h2 class="sec-h">Live <em>Threat Detection</em></h2>
+    <div class="demo-layout">
+      <!-- Left: Interactive controls -->
+      <div>
+        <div class="demo-panel reveal">
+          <div class="demo-panel-title">⚡ <span>Anomaly Scoring Engine</span></div>
+
+          <div class="param-row">
+            <div class="param-label">Login attempts / hour <em id="v-login">5</em></div>
+            <input type="range" min="1" max="30" value="5" id="sl-login" oninput="updateDemo()">
+          </div>
+          <div class="param-row">
+            <div class="param-label">Unique source IPs <em id="v-ips">2</em></div>
+            <input type="range" min="1" max="20" value="2" id="sl-ips" oninput="updateDemo()">
+          </div>
+          <div class="param-row">
+            <div class="param-label">Failed auth ratio <em id="v-fail">10%</em></div>
+            <input type="range" min="0" max="100" value="10" id="sl-fail" oninput="updateDemo()">
+          </div>
+          <div class="param-row">
+            <div class="param-label">Off-hours activity <em id="v-off">No</em></div>
+            <input type="range" min="0" max="1" value="0" step="1" id="sl-off" oninput="updateDemo()">
+          </div>
+          <div class="param-row">
+            <div class="param-label">Geo anomaly detected <em id="v-geo">No</em></div>
+            <input type="range" min="0" max="1" value="0" step="1" id="sl-geo" oninput="updateDemo()">
+          </div>
+          <div class="param-row">
+            <div class="param-label">Data exfil volume (MB) <em id="v-data">0</em></div>
+            <input type="range" min="0" max="500" value="0" id="sl-data" oninput="updateDemo()">
+          </div>
+
+          <div class="risk-meter">
+            <div class="risk-meter-label"><span>Risk Score</span><span id="riskPct">0%</span></div>
+            <div class="risk-track"><div class="risk-fill" id="riskFill"></div></div>
+          </div>
+          <div class="risk-score-row">
+            <div class="risk-score-big" id="riskBig">0</div>
+            <div>
+              <div class="risk-score-label">/ 100 RISK SCORE</div>
+              <div id="resultPill"></div>
+            </div>
+          </div>
+
+          <div class="demo-log-panel">
+            <div class="demo-log-title">System Event Log</div>
+            <div class="demo-log" id="demoLog">
+              <span class="log-line log-info">// Threat detection engine initialised</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Feature explainer cards -->
+      <div class="demo-features reveal">
+        <div class="df-item">
+          <div class="df-icon">🔬</div>
+          <div class="df-content">
+            <div class="df-title">Multi-factor Scoring</div>
+            <div class="df-desc">Combines 6 behavioral signals — login frequency, source IP diversity, auth failure rate, temporal patterns, geo-anomalies, and data volume — into a weighted risk score.</div>
+          </div>
+        </div>
+        <div class="df-item">
+          <div class="df-icon">🤖</div>
+          <div class="df-content">
+            <div class="df-title">ML Model Architecture</div>
+            <div class="df-desc">Production model uses Isolation Forest for unsupervised anomaly detection + LSTM for sequence-based pattern recognition. Trained on 50K+ synthetic SOC log events.</div>
+          </div>
+        </div>
+        <div class="df-item">
+          <div class="df-icon">⚡</div>
+          <div class="df-content">
+            <div class="df-title">Real-Time Stream Processing</div>
+            <div class="df-desc">In production: Kafka ingests log streams → AWS Lambda invokes the ML model per batch → alerts written to DynamoDB and surfaced on the React dashboard in &lt;2 seconds.</div>
+          </div>
+        </div>
+        <div class="df-item">
+          <div class="df-icon">🎯</div>
+          <div class="df-content">
+            <div class="df-title">3-Tier Alert Classification</div>
+            <div class="df-desc">Score 0-39 = Normal (baseline), 40-69 = Suspicious (queue for analyst review), 70-100 = Critical (auto-block + immediate alert). Reduces false positives by 40%.</div>
+          </div>
+        </div>
+        <div class="df-item">
+          <div class="df-icon">📊</div>
+          <div class="df-content">
+            <div class="df-title">Model Performance</div>
+            <div class="df-desc">LSTM model achieves 95.8% accuracy and 0.94 F1-score on highly imbalanced dataset (5% attack, 95% normal traffic). Precision: 93.2%, Recall: 94.7%.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHATBOT ═══ -->
+<section class="section" id="chat">
+  <div class="section-inner">
+    <div class="sec-label">05 — AI CHATBOT</div>
+    <h2 class="sec-h">Talk to <em>Pramod AI</em></h2>
+    <div class="chat-layout">
+      <!-- Chat window -->
+      <div>
+        <div class="chatbot-card reveal">
+          <div class="chat-header">
+            <div class="chat-avatar">🤖</div>
+            <div>
+              <div class="chat-agent-name">Pramod AI — SOC Assistant</div>
+              <div class="chat-agent-status"><div class="chat-status-dot"></div>Online · Powered by Claude</div>
+            </div>
+          </div>
+          <div class="chat-window" id="chatWindow">
+            <div class="chat-msg bot">
+              <div class="bot-label">PRAMOD AI ✦ CLAUDE</div>
+              Hey! I'm Pramod's AI assistant. Ask me anything about his experience, projects, skills, or why you should hire him for AI/SOC roles. 🔐
+            </div>
+          </div>
+          <div class="chat-suggestions">
+            <button class="sug" onclick="sendSuggestion(this)">What makes Pramod unique?</button>
+            <button class="sug" onclick="sendSuggestion(this)">Tell me about the SIEM project</button>
+            <button class="sug" onclick="sendSuggestion(this)">What's his ML experience?</button>
+            <button class="sug" onclick="sendSuggestion(this)">Is he available to hire?</button>
+          </div>
+          <div class="chat-input-row">
+            <input class="chat-input" id="chatInput" type="text" placeholder="Ask about experience, projects, skills..." onkeydown="if(event.key==='Enter')sendChat()">
+            <button class="chat-send" id="sendBtn" onclick="sendChat()">SEND ↑</button>
+          </div>
+        </div>
+
+        <!-- API key input -->
+        <div style="margin-top:16px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px;">
+          <div style="font-family:var(--font-mono); font-size:10px; color:var(--txt3); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px;">🔑 Claude API Key (required for chatbot)</div>
+          <div style="display:flex;gap:10px;">
+            <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." style="flex:1;background:var(--bg);border:1px solid var(--border2);color:var(--txt);border-radius:var(--radius-sm);padding:10px 14px;font-family:var(--font-mono);font-size:11px;outline:none;">
+            <button onclick="saveKey()" style="padding:10px 20px;background:var(--green);color:#030a12;border:none;border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:10px;font-weight:700;cursor:pointer;letter-spacing:1px;">SAVE</button>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--txt3);margin-top:8px;">Your key is stored only in your browser. Get one free at <a href="https://console.anthropic.com" target="_blank" style="color:var(--cyan)">console.anthropic.com</a></div>
+        </div>
+      </div>
+
+      <!-- Info sidebar -->
+      <div class="chat-info-col reveal">
+        <div class="info-card">
+          <h3>How It Works</h3>
+          <div class="info-item"><span>🧠</span><span>Powered by Claude claude-sonnet-4-20250514 with a custom SOC/cybersecurity system prompt trained on Pramod's exact experience</span></div>
+          <div class="info-item"><span>💬</span><span>Maintains conversation history (last 10 messages) for context-aware responses</span></div>
+          <div class="info-item"><span>🔐</span><span>Your API key is stored locally in sessionStorage — never transmitted to any third-party server</span></div>
+          <div class="info-item"><span>⚡</span><span>Average response time: 1-3 seconds on Claude Sonnet</span></div>
+        </div>
+        <div class="info-card">
+          <h3>Suggested Topics</h3>
+          <div class="info-item"><span>🛡️</span><span>SOC experience and incident response background</span></div>
+          <div class="info-item"><span>🤖</span><span>AI/ML projects and technical implementation</span></div>
+          <div class="info-item"><span>☁️</span><span>AWS cloud architecture and services used</span></div>
+          <div class="info-item"><span>📍</span><span>Location, availability, and role preferences</span></div>
+          <div class="info-item"><span>💼</span><span>Why hire Pramod over other candidates?</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY HIRE ME ═══ -->
+<section class="section" id="hire" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="sec-label">06 — WHY HIRE ME</div>
+    <h2 class="sec-h">The <em>Recruiter</em> Case</h2>
+    <div class="hire-grid">
+      <div class="hire-card reveal">
+        <div class="hire-num">01 // RARITY</div>
+        <h3>12 Years + AI — Rare Combo</h3>
+        <p>Most AI engineers have zero security experience. Most SOC analysts can't code ML pipelines. I'm one of very few professionals who can operate both sides simultaneously — no ramp-up needed.</p>
+      </div>
+      <div class="hire-card reveal">
+        <div class="hire-num">02 // CONTEXT</div>
+        <h3>I Know What to Detect</h3>
+        <p>I've seen real attacks. Real false positives. Real alert fatigue. When I build ML models for threat detection, I'm not guessing at features — I'm encoding 12 years of pattern recognition into the model.</p>
+      </div>
+      <div class="hire-card reveal">
+        <div class="hire-num">03 // DELIVERY</div>
+        <h3>I Ship Real Systems</h3>
+        <p>Not toy projects — production-grade architecture. Kafka streaming, AWS serverless, ML model API, React dashboard. I understand end-to-end system design, not just individual components.</p>
+      </div>
+      <div class="hire-card reveal">
+        <div class="hire-num">04 // SPEED</div>
+        <h3>Zero Onboarding Cost</h3>
+        <p>I understand SOC workflows, escalation paths, SIEM tooling, and analyst pain points. I can integrate with your security team from day one without requiring months of context-building.</p>
+      </div>
+      <div class="hire-card reveal">
+        <div class="hire-num">05 // MINDSET</div>
+        <h3>Attacker-Defender Thinking</h3>
+        <p>Over 12 years I've studied every attack pattern in the book. I design detection systems with the adversarial mindset baked in — not just optimising F1 score on a benchmark dataset.</p>
+      </div>
+      <div class="hire-card reveal">
+        <div class="hire-num">06 // GROWTH</div>
+        <h3>Hungry to Keep Building</h3>
+        <p>I'm transitioning by choice — because I want to solve bigger problems with better tools. I'm self-driven, consistently building, and deeply motivated. Not coasting. Accelerating.</p>
+      </div>
+    </div>
+    <div class="hire-cta reveal">
+      <div class="hire-cta-text">
+        <h3>Let's Talk. Your team needs this skill set.</h3>
+        <p>Available for AI SOC Analyst, Security Data Analyst, and Cybersecurity ML Engineer roles. Based in Mumbai. Open to remote and hybrid.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="mailto:pramodj551@gmail.com" class="btn-primary">📧 Email Me</a>
+        <a href="#" class="btn-secondary" id="dlResume">↓ Download Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="sec-label">07 — CONTACT</div>
+    <h2 class="sec-h">Get in <em>Touch</em></h2>
+    <div class="contact-grid reveal">
+      <a href="mailto:pramodj551@gmail.com" class="contact-card">
+        <div class="cc-icon-wrap">📧</div>
+        <div><div class="cc-label">Email</div><div class="cc-val">pramodj551@gmail.com</div></div>
+      </a>
+      <a href="https://linkedin.com/in/pramod-jadhav" target="_blank" class="contact-card">
+        <div class="cc-icon-wrap">💼</div>
+        <div><div class="cc-label">LinkedIn</div><div class="cc-val">linkedin.com/in/pramod-jadhav</div></div>
+      </a>
+      <a href="https://github.com/pramodjadhav" target="_blank" class="contact-card">
+        <div class="cc-icon-wrap">🐙</div>
+        <div><div class="cc-label">GitHub</div><div class="cc-val">github.com/pramodjadhav</div></div>
+      </a>
+      <a href="#" class="contact-card">
+        <div class="cc-icon-wrap">📍</div>
+        <div><div class="cc-label">Location</div><div class="cc-val">Mumbai, India</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>Built by <strong>Pramod Jadhav</strong> — AI SOC Analyst | Cybersecurity × Machine Learning</p>
+  <p style="margin-top:6px">Powered by Claude API · Deployed on Netlify · 2025</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+// ── Theme Toggle ─────────────────────────────
+function toggleTheme() {
+  const l = document.body.classList.toggle('light');
+  document.getElementById('themeBtn').textContent = l ? '🌙 Dark' : '☀ Light';
+}
+
+// ── Mobile Menu ───────────────────────────────
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ── Typing Animation ──────────────────────────
+const titles = [
+  'AI SOC Analyst',
+  'ML Threat Detection Engineer',
+  'Security Data Scientist',
+  'Cloud SIEM Architect',
+  'Cybersecurity × AI Engineer'
+];
+let ti = 0, ci = 0, del = false;
+const el = document.getElementById('typingEl');
+function type() {
+  const t = titles[ti];
+  el.innerHTML = (del ? t.slice(0,ci) : t.slice(0,ci)) + '<span class="cursor"></span>';
+  if (!del) { ci++; if (ci > t.length) { del = true; setTimeout(type, 1600); return; } }
+  else       { ci--; if (ci < 0)        { del = false; ti = (ti+1)%titles.length; setTimeout(type, 300); return; } }
+  setTimeout(type, del ? 45 : 80);
+}
+type();
+
+// ── Counter Animation ─────────────────────────
+function animateCounter(el, target) {
+  let n = 0;
+  const step = target / 50;
+  const t = setInterval(() => {
+    n = Math.min(n + step, target);
+    el.textContent = Math.round(n) + (el.dataset.count === '95' ? '' : '+');
+    if (n >= target) clearInterval(t);
+  }, 30);
+}
+
+// ── Reveal on Scroll ──────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Skill bars
+      e.target.querySelectorAll('.sb-fill').forEach(b => {
+        setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 100);
+      });
+      // Counters
+      if (!e.target._counted) {
+        e.target.querySelectorAll('[data-count]').forEach(c => animateCounter(c, +c.dataset.count));
+        e.target._counted = true;
+      }
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Also trigger counters in hero
+document.querySelectorAll('.hstat-n[data-count]').forEach(c => {
+  setTimeout(() => animateCounter(c, +c.dataset.count), 500);
+});
+// Hero skill bars triggered immediately
+document.querySelectorAll('#hero .sb-fill').forEach(b => {
+  setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 600);
+});
+
+// ── Terminal Simulation ───────────────────────
+let evtN = 847;
+const statuses = [
+  ['✓ All clear — baseline normal', 'log-ok', 't-ok'],
+  ['⚠ Elevated login attempts on host-04', 'log-warn', 't-warn'],
+  ['✓ Auth rate normalised', 'log-ok', 't-ok'],
+  ['→ New IP observed: 192.168.4.211', 'log-info', 't-key'],
+  ['✓ Geo-check passed', 'log-ok', 't-ok'],
+];
+let si = 0;
+setInterval(() => {
+  evtN += Math.floor(Math.random()*12)+3;
+  document.getElementById('evtCount').textContent = evtN.toLocaleString();
+  si = (si+1) % statuses.length;
+  const el = document.getElementById('termStatus');
+  if (el) { el.className = 't-line t-out ' + statuses[si][2]; el.textContent = statuses[si][0]; }
+}, 2800);
+
+// ── Threat Demo Logic ─────────────────────────
+function updateDemo() {
+  const login = +document.getElementById('sl-login').value;
+  const ips   = +document.getElementById('sl-ips').value;
+  const fail  = +document.getElementById('sl-fail').value;
+  const off   = +document.getElementById('sl-off').value;
+  const geo   = +document.getElementById('sl-geo').value;
+  const data  = +document.getElementById('sl-data').value;
+
+  document.getElementById('v-login').textContent = login;
+  document.getElementById('v-ips').textContent   = ips;
+  document.getElementById('v-fail').textContent  = fail + '%';
+  document.getElementById('v-off').textContent   = off ? 'Yes' : 'No';
+  document.getElementById('v-geo').textContent   = geo ? 'Yes' : 'No';
+  document.getElementById('v-data').textContent  = data;
+
+  // Weighted risk score calculation
+  let score = 0;
+  if (login > 20) score += 25; else if (login > 10) score += 12; else if (login > 6) score += 6;
+  if (ips   > 10) score += 20; else if (ips > 5)    score += 10; else if (ips > 3) score += 5;
+  score += Math.min(fail * 0.35, 25);
+  score += off  * 18;
+  score += geo  * 22;
+  score += Math.min(data / 500 * 20, 20);
+  score = Math.round(Math.min(score, 100));
+
+  const fill  = document.getElementById('riskFill');
+  const big   = document.getElementById('riskBig');
+  const pill  = document.getElementById('resultPill');
+  const pct   = document.getElementById('riskPct');
+
+  fill.style.width = score + '%';
+  pct.textContent  = score + '%';
+  big.textContent  = score;
+
+  let cls, label, icon, fillColor;
+  if (score >= 70) {
+    cls = 'rp-crit'; label = 'CRITICAL THREAT'; icon = '🚨';
+    fillColor = 'linear-gradient(90deg, #ff3d5a, #ff7043)';
+    big.style.color = 'var(--red)';
+    addLog(`[CRITICAL] score=${score} logins=${login} IPs=${ips} fail=${fail}% off=${off?'Y':'N'} geo=${geo?'Y':'N'} exfil=${data}MB → AUTO-BLOCK + ALERT`, 'log-crit');
+  } else if (score >= 40) {
+    cls = 'rp-warn'; label = 'SUSPICIOUS'; icon = '⚠️';
+    fillColor = 'linear-gradient(90deg, var(--orange), #ff7043)';
+    big.style.color = 'var(--orange)';
+    addLog(`[WARN] score=${score} — elevated risk pattern, queuing for analyst review`, 'log-warn');
+  } else {
+    cls = 'rp-ok'; label = 'NORMAL'; icon = '✅';
+    fillColor = 'linear-gradient(90deg, var(--cyan), var(--green))';
+    big.style.color = 'var(--green)';
+    addLog(`[OK] score=${score} — activity within baseline thresholds`, 'log-ok');
+  }
+
+  fill.style.background = fillColor;
+  pill.innerHTML = `<div class="result-pill ${cls}">${icon} ${label} | ${score}/100</div>`;
+}
+
+function addLog(msg, cls) {
+  const log = document.getElementById('demoLog');
+  const ts  = new Date().toTimeString().split(' ')[0];
+  const line = document.createElement('span');
+  line.className = 'log-line ' + cls;
+  line.textContent = `[${ts}] ${msg}`;
+  log.appendChild(line);
+  if (log.children.length > 30) log.removeChild(log.firstChild);
+  log.scrollTop = log.scrollHeight;
+}
+
+// Init demo
+updateDemo();
+
+// ── Chatbot ───────────────────────────────────
+const SYSTEM_PROMPT = `You are an AI assistant representing Pramod Jadhav's portfolio. Answer as Pramod in first person, professionally and concisely (2-4 sentences).
+
+About Pramod:
+- 12+ years Security Operations Center (SOC) experience in Mumbai, India
+- Now transitioning into AI-powered cybersecurity — building real ML systems, not just studying
+- Technical skills: Python, Scikit-learn, TensorFlow, Kafka, AWS (Lambda, S3, DynamoDB, Kinesis, API Gateway), React, Node.js
+- Main project: AI-Powered SIEM System — real-time Kafka → Lambda → ML → DynamoDB → React dashboard pipeline, 95.8% anomaly detection accuracy
+- ML project: Isolation Forest + LSTM models trained on 50K+ synthetic SOC logs
+- Portfolio chatbot: this AI-powered website using Claude API
+- Email: pramodj551@gmail.com | LinkedIn: linkedin.com/in/pramod-jadhav | GitHub: github.com/pramodjadhav
+- Looking for: AI SOC Analyst, Security Data Analyst, or Cybersecurity ML Engineer roles
+- Unique value: combines real hands-on SOC operations depth with ML/AI engineering skills — rare combination
+
+Keep answers concise. Be confident but not arrogant. If asked unrelated topics, gently redirect.`;
+
+const chatHistory = [];
+
+function appendMsg(text, role) {
+  const win = document.getElementById('chatWindow');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  if (role === 'bot') div.innerHTML = `<div class="bot-label">PRAMOD AI ✦ CLAUDE</div>${text}`;
+  else div.textContent = text;
+  win.appendChild(div);
+  win.scrollTop = win.scrollHeight;
+}
+
+function showTyping() {
+  const win = document.getElementById('chatWindow');
+  const div = document.createElement('div');
+  div.className = 'chat-msg bot'; div.id = 'typingInd';
+  div.innerHTML = '<div class="bot-label">PRAMOD AI ✦ CLAUDE</div><div class="typing-indicator"><span></span><span></span><span></span></div>';
+  win.appendChild(div); win.scrollTop = win.scrollHeight;
+}
+
+function removeTyping() {
+  const e = document.getElementById('typingInd');
+  if (e) e.remove();
+}
+
+function saveKey() {
+  const k = document.getElementById('apiKeyInput').value.trim();
+  if (!k) return;
+  sessionStorage.setItem('claude_key', k);
+  document.getElementById('apiKeyInput').value = '';
+  appendMsg('✅ API key saved! You can now chat with me.', 'bot');
+}
+
+async function callAPI(msg) {
+  const key = sessionStorage.getItem('claude_key');
+  if (!key) throw new Error('NO_KEY');
+  chatHistory.push({ role:'user', content:msg });
+  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json', 'x-api-key': key, 'anthropic-version':'2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+    body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:600, system:SYSTEM_PROMPT, messages:chatHistory })
+  });
+  if (!resp.ok) { const d = await resp.json(); throw new Error(d.error?.message || resp.status) }
+  const d = await resp.json();
+  const reply = d.content[0].text;
+  chatHistory.push({ role:'assistant', content:reply });
+  if (chatHistory.length > 12) chatHistory.splice(0,2);
+  return reply;
+}
+
+async function sendChat() {
+  const inp = document.getElementById('chatInput');
+  const btn = document.getElementById('sendBtn');
+  const q = inp.value.trim();
+  if (!q) return;
+  appendMsg(q, 'user'); inp.value = ''; btn.disabled = true; showTyping();
+  try {
+    const reply = await callAPI(q);
+    removeTyping(); appendMsg(reply, 'bot');
+  } catch(err) {
+    removeTyping();
+    if (err.message === 'NO_KEY') appendMsg('⚠️ Please enter your Claude API key below to enable the chatbot.', 'bot');
+    else appendMsg('⚠️ Error: ' + err.message + '. Please check your API key and try again.', 'bot');
+  } finally { btn.disabled = false; }
+}
+
+function sendSuggestion(btn) {
+  document.getElementById('chatInput').value = btn.textContent;
+  sendChat();
+}
+
+// ── Resume download placeholder ───────────────
+document.querySelectorAll('#resumeBtn, #dlResume').forEach(b => {
+  b.addEventListener('click', e => {
+    e.preventDefault();
+    alert('📄 Resume download: Replace this with your actual resume PDF link.\n\nUpload your resume to Google Drive or GitHub and update the href attribute on the resume buttons.');
+  });
+});
+</script>
+</body>
+</html>
