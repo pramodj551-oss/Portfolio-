@@ -1,203 +1,3 @@
-  <div>
-        <div class="demo-label" style="margin-bottom:8px">Off-Hours Login Detected</div>
-        <div class="demo-toggle" onclick="toggleSwitch(this)">
-          <div class="toggle-track" id="offTrack"><div class="toggle-thumb"></div></div>
-          <span style="font-size:13px;color:var(--muted)" id="toggleLabel">No</span>
-        </div>
-      </div>
-      <button class="btn-grad" onclick="runAnalysis()" style="margin-top:auto">Run Analysis →</button>
-    </div>
-    <div class="demo-terminal">
-      <div class="term-bar">
-        <div class="term-dot" style="background:#ff5f57"></div>
-        <div class="term-dot" style="background:#febc2e"></div>
-        <div class="term-dot" style="background:#28c840"></div>
-        <span style="font-size:10px;color:var(--muted);margin-left:8px;font-family:'JetBrains Mono',monospace">isolation_forest_model.py</span>
-      </div>
-      <div class="term-content" id="termContent">
-        <span class="t-info">[SYSTEM]</span> Isolation Forest model ready — awaiting input...<br>
-        <span class="t-info">[INFO]</span> Set parameters above and click Run Analysis
-      </div>
-    </div>
-    <div class="demo-result" id="demoResult"></div>
-  </div>
-</div>
-</section>
-</div>
-
-<!-- CONTACT / CHAT -->
-<section id="contact" class="sec">
-  <div class="sec-label" style="color:var(--b2)">Get In Touch</div>
-  <h2 class="sec-title">Ask Me<br><span style="background:linear-gradient(135deg,var(--b2),var(--b1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Anything</span></h2>
-  <div class="chat-wrap">
-    <div class="suggestions">
-      <button class="sug" onclick="askSug(this)">What's your background?</button>
-      <button class="sug" onclick="askSug(this)">Tell me about your projects</button>
-      <button class="sug" onclick="askSug(this)">What roles are you targeting?</button>
-      <button class="sug" onclick="askSug(this)">What is Isolation Forest?</button>
-      <button class="sug" onclick="askSug(this)">Are you open to relocation?</button>
-    </div>
-    <div class="chat-window" id="chatWindow">
-      <div class="msg bot">
-        <div class="bot-tag">PRAMOD.AI</div>
-        Hi! I'm Pramod's AI assistant. Ask me about his background, projects, or anything about AI security. What would you like to know?
-      </div>
-    </div>
-    <div class="chat-row">
-      <input class="chat-input" id="chatInput" placeholder="Ask about Pramod's experience or projects..." onkeydown="if(event.key==='Enter')sendMsg()">
-      <button class="chat-send" id="sendBtn" onclick="sendMsg()">Send</button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot-name">PRAMOD JADHAV</div>
-  <div class="foot-links">
-    <a href="mailto:pramodj551@gmail.com">pramodj551@gmail.com</a>
-    <a href="https://github.com/pramodj551-oss" target="_blank">github.com/pramodj551-oss</a>
-    <a href="https://linkedin.com/in/pramod-jadhav-42ba2281" target="_blank">linkedin.com/in/pramod-jadhav-42ba2281</a>
-  </div>
-  <div class="foot-copy">Vidyavihar / Thane, Mumbai &nbsp;·&nbsp; +91 88504 27883 &nbsp;·&nbsp; Open to Relocation</div>
-</footer>
-
-<script>
-// ── COUNTER ANIMATION ──────────────────────────
-function animateCounters() {
-  document.querySelectorAll('[data-count]').forEach(el => {
-    const target = parseInt(el.dataset.count);
-    const suffix = el.dataset.count >= 100 ? '+' : (target === 30 ? '%' : '+');
-    let start = 0;
-    const dur = 1800;
-    const step = dur / target;
-    const timer = setInterval(() => {
-      start++;
-      el.textContent = start + suffix;
-      if (start >= target) clearInterval(timer);
-    }, step);
-  });
-}
-const heroObs = new IntersectionObserver(e => { if(e[0].isIntersecting){ animateCounters(); heroObs.disconnect(); }});
-heroObs.observe(document.getElementById('hero'));
-
-// ── SKILL BAR ANIMATION ────────────────────────
-const barObs = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if (en.isIntersecting) {
-      en.target.querySelectorAll('.sk-fill').forEach(fill => {
-        const w = fill.dataset.w;
-        setTimeout(() => fill.style.width = w + '%', 100);
-      });
-      barObs.unobserve(en.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('#skills').forEach(s => barObs.observe(s));
-
-// ── DEMO ──────────────────────────────────────
-let offHours = false;
-function toggleSwitch(el) {
-  offHours = !offHours;
-  el.querySelector('.toggle-track').classList.toggle('on', offHours);
-  document.getElementById('toggleLabel').textContent = offHours ? 'Yes' : 'No';
-}
-
-function runAnalysis() {
-  const attempts = parseInt(document.getElementById('dAttempts').value) || 0;
-  const ips = parseInt(document.getElementById('dIPs').value) || 0;
-  const term = document.getElementById('termContent');
-  const result = document.getElementById('demoResult');
-
-  // Calculate anomaly score
-  let score = 0;
-  if (attempts > 100) score += 3;
-  else if (attempts > 50) score += 2;
-  else if (attempts > 20) score += 1;
-  if (ips > 10) score += 3;
-  else if (ips > 5) score += 2;
-  else if (ips > 3) score += 1;
-  if (offHours) score += 2;
-  const ratio = ips > 0 ? (attempts / ips).toFixed(1) : 0;
-  const isoScore = Math.min(0.99, (score * 0.12 + Math.random() * 0.05)).toFixed(2);
-
-  term.innerHTML = `
-<span class="t-info">[MODEL]</span> Loading Isolation Forest weights...<br>
-<span class="t-info">[DATA]</span> Parsing input → attempts: ${attempts} | unique_ips: ${ips} | off_hours: ${offHours}<br>
-<span class="t-info">[FEAT]</span> login_rate=${attempts}/hr | ip_entropy=${ips} | ratio=${ratio} | temporal=${offHours?1:0}<br>
-<span class="t-info">[MODEL]</span> Running Isolation Forest anomaly scoring...<br>
-<span class="${score >= 5 ? 't-crit' : score >= 3 ? 't-warn' : 't-ok'}">[RESULT]</span> Anomaly score: <strong>${isoScore}</strong> | Threshold: 0.50<br>
-<span class="${score >= 5 ? 't-crit' : score >= 3 ? 't-warn' : 't-ok'}">[STATUS]</span> ${score >= 5 ? '⚠ CRITICAL — Flagging for SOC review' : score >= 3 ? '⚡ SUSPICIOUS — Elevated monitoring' : '✓ NORMAL — Pattern within baseline'}`;
-
-  result.style.display = 'block';
-  if (score >= 5) {
-    result.className = 'demo-result result-crit';
-    result.textContent = '🚨 CRITICAL ANOMALY — SOC Alert Triggered';
-  } else if (score >= 3) {
-    result.className = 'demo-result result-warn';
-    result.textContent = '⚡ SUSPICIOUS ACTIVITY — Elevated Monitoring';
-  } else {
-    result.className = 'demo-result result-safe';
-    result.textContent = '✓ NORMAL — No anomalies detected';
-  }
-}
-
-// ── CHATBOT ───────────────────────────────────
-const responses = {
-  "background": "Pramod has 12+ years in Security Operations — managing SIEM systems, monitoring 100+ CCTV feeds in Tier-III data centers, and handling real-time threat response. Currently, he's advancing into AI/ML through IIT Patna's program and applying it to actual SOC automation projects.",
-  "projects": "Pramod has built 3 applied AI projects: (1) Security Log Anomaly Detection using Isolation Forest — detected 12 real suspicious logins, cut review time by 40%. (2) PII Detection System using Python/Pandas for GDPR compliance. (3) Automated KPI Tracker that cut reporting from 4 hours to 3 minutes.",
-  "roles": "Pramod is targeting AI SOC Analyst, Security Data Analyst, and Threat Intelligence roles — hybrid positions where deep security domain knowledge meets Python/ML capabilities. He's open to relocation across India.",
-  "isolation forest": "Isolation Forest is an unsupervised ML algorithm that detects anomalies by randomly isolating data points. Unusual behavior gets isolated faster (shorter path length) than normal behavior. Pramod uses it to detect suspicious login patterns in access-control logs — no labeled training data needed, which makes it perfect for security use cases.",
-  "relocation": "Yes! Pramod is fully open to relocation anywhere in India for high-impact opportunities, especially in AI-driven security operations or data analytics roles.",
-  "iit patna": "Pramod is currently enrolled in the Applied AI & ML Essentials program at IIT Patna's Vishlesan i-Hub (2025–2026). He's applying everything he learns directly to real SOC automation problems.",
-  "python": "Pramod uses Python with Pandas, NumPy, and Scikit-Learn for log parsing, anomaly detection, and automation. His skill is advancing rapidly — he's built 3 production-ready tools applied to real security environments.",
-  "contact": "You can reach Pramod at pramodj551@gmail.com. He's also on LinkedIn at linkedin.com/in/pramod-jadhav-42ba2281 and GitHub at github.com/pramodj551-oss.",
-};
-
-async function sendMsg() {
-  const input = document.getElementById('chatInput');
-  const win = document.getElementById('chatWindow');
-  const btn = document.getElementById('sendBtn');
-  const text = input.value.trim();
-  if (!text) return;
-
-  // Add user message
-  const userDiv = document.createElement('div');
-  userDiv.className = 'msg user';
-  userDiv.textContent = text;
-  win.appendChild(userDiv);
-  input.value = '';
-  win.scrollTop = win.scrollHeight;
-  btn.disabled = true;
-  btn.textContent = '...';
-
-  // Find response
-  const lower = text.toLowerCase();
-  let reply = "Great question! For detailed information about Pramod's experience, projects, or background, feel free to email him at pramodj551@gmail.com. He'd love to connect!";
-  for (const [key, val] of Object.entries(responses)) {
-    if (lower.includes(key)) { reply = val; break; }
-  }
-
-  await new Promise(r => setTimeout(r, 900));
-
-  const botDiv = document.createElement('div');
-  botDiv.className = 'msg bot';
-  botDiv.innerHTML = `<div class="bot-tag">PRAMOD.AI</div>${reply}`;
-  win.appendChild(botDiv);
-  win.scrollTop = win.scrollHeight;
-  btn.disabled = false;
-  btn.textContent = 'Send';
-}
-
-function askSug(el) {
-  document.getElementById('chatInput').value = el.textContent;
-  sendMsg();
-}
-</script>
-</body>
-</html>function qs(el){document.getElementById('ci').value=el.textContent;sm()}
-</script>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -434,4 +234,234 @@ footer{background:var(--surf);border-top:1px solid var(--border);padding:52px 6%
   <div class="about-grid">
     <div class="about-text">
       <p>I've spent <strong>12+ years on the front lines of Security Operations</strong> — managing SIEM systems in Tier-III data centers, monitoring 100+ CCTV feeds, and responding to real threats in real time. That decade of experience gave me something no course can teach: <strong>deep threat intuition</strong>.</p>
-      <p>Now I'm combining that domain knowledge with <strong>Python, Machine Learning, and data engineering</strong> through my ongoing program at <strong>IIT Patna (Vishlesan i-Hub)</strong>. I'm not just learning AI — I'm applying 
+      <p>Now I'm combining that domain knowledge with <strong>Python, Machine Learning, and data engineering</strong> through my ongoing program at <strong>IIT Patna (Vishlesan i-Hub)</strong>. I'm not just learning AI — I'm applying it directly to the security problems I've lived with for over a decade.</p>
+      <p>My goal is to build <strong>AI-powered SOC automation tools</strong> that reduce alert fatigue, detect anomalies earlier, and turn raw log data into actionable intelligence.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-title">What I'm Looking For</div>
+      <p>AI SOC Analyst, Security Data Analyst, or Threat Intelligence roles where security expertise meets Python/ML to build smarter detection systems.</p>
+      <p>Open to hybrid or relocation across India for high-impact opportunities.</p>
+      <div class="about-email">pramodj551@gmail.com</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="skills" class="sec">
+  <div class="sec-label" style="color:var(--g1)">What I Know</div>
+  <h2 class="sec-title">Skills &amp;<br><span style="background:linear-gradient(135deg,var(--g1),var(--b1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Proficiency</span></h2>
+  <div class="skills-grid">
+    <div class="sk"><div class="sk-top"><div class="sk-name">SOC Operations</div><div class="sk-badge expert">Expert</div></div><div class="sk-desc">12+ years real-world SOC monitoring, alert triage, incident response, and threat hunting across critical infrastructure.</div><div class="sk-bar"><div class="sk-fill" data-w="98" style="background:linear-gradient(90deg,var(--g1),var(--g2))"></div></div><div class="sk-pct">98%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">SIEM &amp; Log Analysis</div><div class="sk-badge expert">Expert</div></div><div class="sk-desc">Deep experience with SIEM operations, log aggregation, data mining, and false positive reduction in enterprise environments.</div><div class="sk-bar"><div class="sk-fill" data-w="95" style="background:linear-gradient(90deg,var(--g1),var(--g2))"></div></div><div class="sk-pct">95%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">CCTV &amp; Physical Security</div><div class="sk-badge expert">Expert</div></div><div class="sk-desc">Monitored 100+ live feeds using Milestone X-Protect and Solus. Tier-III data center physical security management.</div><div class="sk-bar"><div class="sk-fill" data-w="96" style="background:linear-gradient(90deg,var(--g1),var(--g2))"></div></div><div class="sk-pct">96%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">Python &amp; Automation</div><div class="sk-badge advancing">Advancing</div></div><div class="sk-desc">Pandas, NumPy, log parsing, automation scripts. Building practical security tools applied to real SOC workflows at IIT Patna.</div><div class="sk-bar"><div class="sk-fill" data-w="52" style="background:linear-gradient(90deg,var(--b1),var(--b2))"></div></div><div class="sk-pct">52%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">Machine Learning</div><div class="sk-badge applied">Applied</div></div><div class="sk-desc">Scikit-Learn, Isolation Forest (unsupervised anomaly detection), classification basics. Applied to real security datasets.</div><div class="sk-bar"><div class="sk-fill" data-w="42" style="background:linear-gradient(90deg,var(--y1),var(--r1))"></div></div><div class="sk-pct">42%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">Data Analysis &amp; EDA</div><div class="sk-badge applied">Applied</div></div><div class="sk-desc">Pattern recognition, anomaly detection, exploratory data analysis with Pandas and Matplotlib on security log datasets.</div><div class="sk-bar"><div class="sk-fill" data-w="48" style="background:linear-gradient(90deg,var(--y1),var(--r1))"></div></div><div class="sk-pct">48%</div></div>
+  </div>
+</section>
+
+<div class="surf-wrap">
+<section id="experience" class="sec">
+  <div class="sec-label" style="color:var(--r1)">Career Timeline</div>
+  <h2 class="sec-title">Professional<br><span style="background:linear-gradient(135deg,var(--r1),var(--y1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Experience</span></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">OCT 2025 – PRESENT</div>
+      <div class="tl-title">Security Operations Officer (DGR)</div>
+      <div class="tl-company">AP Securitas — Godrej IT Park, Mumbai</div>
+      <ul class="tl-bullets">
+        <li><strong>SOC Automation:</strong> Python-based log-parsing scripts reduced manual access log review time by <strong>40%</strong>.</li>
+        <li><strong>AI Integration:</strong> Applying IIT Patna ML concepts to identify access anomaly patterns and build predictive risk models.</li>
+        <li><strong>Threat Detection:</strong> Engineered Isolation Forest anomaly detection pipelines for enterprise access-control systems.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2022 – 2025</div>
+      <div class="tl-title">SOC Analyst &amp; Security Supervisor</div>
+      <div class="tl-company">SIS Security — NTT Global Data Centre</div>
+      <ul class="tl-bullets">
+        <li><strong>Critical Infrastructure:</strong> Managed <strong>100+ live feeds</strong> and SIEM in Tier-III data center — 24/7 zero-downtime operations.</li>
+        <li><strong>Audit &amp; Compliance:</strong> Data-driven access-control audits achieved <strong>30% reduction</strong> in unauthorized access violations.</li>
+        <li><strong>Pattern Recognition:</strong> Log data mining identified recurring intrusion patterns, driving development of Python detection models.</li>
+        <li><strong>Incident Response:</strong> SOC threat-response coordination for multi-building enterprise — full SLA compliance maintained.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2020 – 2022</div>
+      <div class="tl-title">Operations Supervisor</div>
+      <div class="tl-company">MSRDC — Mulund LBS Toll Plaza</div>
+      <ul class="tl-bullets">
+        <li>Orchestrated daily operational workflows and maintained <strong>100% compliance reporting</strong> for high-volume MEP operations.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2016 – 2020</div>
+      <div class="tl-title">Corporate Security Lead</div>
+      <div class="tl-company">NISA / Modern V.R. — Accenture, TCL, MCX</div>
+      <ul class="tl-bullets">
+        <li>Site patrols, CCTV audits, and emergency evacuation for Tier-1 clients — <strong>zero-incident compliance</strong> across full 4-year tenure.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="projects" class="sec">
+  <div class="sec-label" style="color:var(--b2)">What I've Built</div>
+  <h2 class="sec-title">AI Security<br><span style="background:linear-gradient(135deg,var(--b2),var(--r1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Projects</span></h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-tag">Python + ML</div>
+      <div class="proj-title">Security Log Anomaly Detection</div>
+      <div class="proj-desc">Unsupervised ML model that automatically detects suspicious login behavior patterns in enterprise access-control logs — replacing manual triage.</div>
+      <div class="proj-row"><div class="proj-rl prob">Problem</div><div class="proj-rt">Manual review of 50,000+ logs/month missed subtle intrusion patterns.</div></div>
+      <div class="proj-row"><div class="proj-rl sol">Solution</div><div class="proj-rt">Isolation Forest model (Scikit-Learn) to detect outliers in login behavior across access-control logs.</div></div>
+      <div class="proj-row"><div class="proj-rl imp">Impact</div><div class="proj-rt">12 confirmed suspicious events detected. SOC review time reduced by 40%.</div></div>
+      <div class="proj-tech"><span class="tc">Python</span><span class="tc">Pandas</span><span class="tc">Scikit-Learn</span><span class="tc">Isolation Forest</span><span class="tc">Jupyter</span></div>
+      <a href="https://github.com/pramodj551-oss/security-log-anomaly-detection" target="_blank" class="proj-link">View on GitHub →</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-tag">Python + Privacy</div>
+      <div class="proj-title">PII Detection &amp; Privacy Compliance</div>
+      <div class="proj-desc">Automated utility that scans enterprise datasets for Personally Identifiable Information, ensuring GDPR-aligned data privacy compliance.</div>
+      <div class="proj-row"><div class="proj-rl prob">Problem</div><div class="proj-rt">Unmasked PII in enterprise datasets created serious GDPR compliance risk.</div></div>
+      <div class="proj-row"><div class="proj-rl sol">Solution</div><div class="proj-rt">Custom Python/Pandas utility with configurable rules to scan and flag PII fields automatically.</div></div>
+      <div class="proj-row"><div class="proj-rl imp">Impact</div><div class="proj-rt">GDPR compliance achieved across all monitored datasets. Manual audit time significantly reduced.</div></div>
+      <div class="proj-tech"><span class="tc">Python</span><span class="tc">Pandas</span><span class="tc">Regex</span><span class="tc">GDPR</span><span class="tc">Automation</span></div>
+      <a href="https://github.com/pramodj551-oss/pii-detection-compliance" target="_blank" class="proj-link">View on GitHub →</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-tag">Python + Data</div>
+      <div class="proj-title">Automated KPI &amp; Metrics Tracker</div>
+      <div class="proj-desc">Scalable Python application for real-time security KPI ingestion, trend analysis, and automated dashboard generation for SOC managers.</div>
+      <div class="proj-row"><div class="proj-rl prob">Problem</div><div class="proj-rt">Manual report generation took 4+ hours/week and was error-prone.</div></div>
+      <div class="proj-row"><div class="proj-rl sol">Solution</div><div class="proj-rt">Python app with JSON storage for real-time metric tracking and Matplotlib dashboard auto-generation.</div></div>
+      <div class="proj-row"><div class="proj-rl imp">Impact</div><div class="proj-rt">Report time cut from 4 hours to under 3 minutes. All KPIs visible in single view.</div></div>
+      <div class="proj-tech"><span class="tc">Python</span><span class="tc">Matplotlib</span><span class="tc">JSON</span><span class="tc">Pandas</span><span class="tc">Automation</span></div>
+      <a href="https://github.com/pramodj551-oss/soc-kpi-tracker" target="_blank" class="proj-link">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<div class="surf-wrap">
+<section id="education" class="sec">
+  <div class="sec-label" style="color:var(--y1)">Qualifications</div>
+  <h2 class="sec-title">Education &amp;<br><span style="background:linear-gradient(135deg,var(--y1),var(--r1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Certifications</span></h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-accent"></div><div class="edu-label">Current</div><div class="edu-degree">Applied AI &amp; ML Essentials</div><div class="edu-inst">IIT Patna — Vishlesan i-Hub</div><div class="edu-badge inprog">✦ In Progress — 2025–2026</div></div>
+    <div class="edu-card"><div class="edu-accent"></div><div class="edu-label">University</div><div class="edu-degree">Bachelor of Science</div><div class="edu-inst">Mumbai University</div><div class="edu-badge pending">Final Year — Appearing</div></div>
+    <div class="edu-card"><div class="edu-accent"></div><div class="edu-label">Technical</div><div class="edu-degree">ITI &amp; N.C.T.V.T. (Fitter)</div><div class="edu-inst">Siemens Ltd.</div><div class="edu-badge complete">Score: 73.4%</div></div>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-card"><div class="cert-icon">🛡️</div><div><div class="cert-name">CompTIA Security+</div><div class="cert-org">CompTIA</div><div class="cert-status prog">In Progress</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🔐</div><div><div class="cert-name">Basic Security Operations</div><div class="cert-org">NISA</div><div class="cert-status ok">Certified</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🔥</div><div><div class="cert-name">Fire Safety</div><div class="cert-org">SIS Security</div><div class="cert-status ok">Certified</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🩺</div><div><div class="cert-name">First Aid</div><div class="cert-org">Siemens Ltd.</div><div class="cert-status ok">Certified</div></div></div>
+  </div>
+</section>
+</div>
+
+<section id="demo" class="sec">
+  <div class="sec-label" style="color:var(--g1)">Live Demo</div>
+  <h2 class="sec-title">Anomaly Detection<br><span style="background:linear-gradient(135deg,var(--g1),var(--b1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Simulator</span></h2>
+  <div class="demo-card">
+    <div class="demo-controls">
+      <div><div class="demo-label">Login Attempts (per hour)</div><input class="demo-input" type="number" id="dA" value="0" min="0" max="500" placeholder="e.g. 45"></div>
+      <div><div class="demo-label">Unique IP Addresses</div><input class="demo-input" type="number" id="dI" value="0" min="0" max="100" placeholder="e.g. 3"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:24px;margin-bottom:0;flex-wrap:wrap">
+      <div><div class="demo-label" style="margin-bottom:8px">Off-Hours Login</div><div class="toggle-wrap" onclick="tog(this)"><div class="toggle-track" id="tt"><div class="toggle-thumb"></div></div><span style="font-size:13px;color:var(--muted)" id="tl">No</span></div></div>
+      <button class="btn-grad" onclick="runDemo()" style="margin-top:22px">Run Analysis →</button>
+    </div>
+    <div class="demo-terminal"><div class="term-bar"><div class="td" style="background:#ff5f57"></div><div class="td" style="background:#febc2e"></div><div class="td" style="background:#28c840"></div><span style="font-size:10px;color:var(--muted);margin-left:8px;font-family:'JetBrains Mono',monospace">isolation_forest.py</span></div><div class="term-body" id="tb"><span class="tinfo">[SYSTEM]</span> Isolation Forest model ready — awaiting input...<br><span class="tinfo">[INFO]</span> Enter parameters above and click Run Analysis</div></div>
+    <div class="demo-result" id="dr"></div>
+  </div>
+</section>
+
+<section id="contact" class="sec" style="padding-top:0">
+  <div class="sec-label" style="color:var(--b2)">Get In Touch</div>
+  <h2 class="sec-title">Ask Me<br><span style="background:linear-gradient(135deg,var(--b2),var(--b1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Anything</span></h2>
+  <div class="chat-wrap">
+    <div class="suggs">
+      <button class="sug" onclick="qs(this)">What's your background?</button>
+      <button class="sug" onclick="qs(this)">Tell me about your projects</button>
+      <button class="sug" onclick="qs(this)">What roles are you targeting?</button>
+      <button class="sug" onclick="qs(this)">What is Isolation Forest?</button>
+      <button class="sug" onclick="qs(this)">Are you open to relocation?</button>
+    </div>
+    <div class="chat-win" id="cw">
+      <div class="msg bot"><div class="bot-tag">PRAMOD.AI</div>Hi! I'm Pramod's AI assistant. Ask me about his background, projects, or anything about AI security. What would you like to know?</div>
+    </div>
+    <div class="chat-row">
+      <input class="chat-input" id="ci" placeholder="Ask about Pramod's experience or projects..." onkeydown="if(event.key==='Enter')sm()">
+      <button class="chat-send" id="sb" onclick="sm()">Send</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-name">PRAMOD JADHAV</div>
+  <div class="foot-links">
+    <a href="mailto:pramodj551@gmail.com">pramodj551@gmail.com</a>
+    <a href="https://github.com/pramodj551-oss" target="_blank">github.com/pramodj551-oss</a>
+    <a href="https://www.linkedin.com/in/pramod-jadhav-42ba2281" target="_blank">LinkedIn</a>
+  </div>
+  <div class="foot-copy">Vidyavihar / Thane, Mumbai &nbsp;·&nbsp; +91 88504 27883 &nbsp;·&nbsp; Open to Relocation</div>
+</footer>
+
+<script>
+// COUNTERS
+const obs1=new IntersectionObserver(e=>{if(e[0].isIntersecting){document.querySelectorAll('[data-target]').forEach(el=>{const t=+el.dataset.target,sf=el.dataset.suffix,d=1600,s=d/t;let c=0;const ti=setInterval(()=>{c++;el.textContent=c+sf;if(c>=t)clearInterval(ti)},s)});obs1.disconnect()}});obs1.observe(document.getElementById('hero'));
+
+// SKILL BARS
+const obs2=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sk-fill').forEach(f=>{setTimeout(()=>f.style.width=f.dataset.w+'%',120)});obs2.unobserve(e.target)}})},{threshold:.3});document.querySelectorAll('#skills').forEach(s=>obs2.observe(s));
+
+// DEMO
+let oh=false;
+function tog(el){oh=!oh;document.getElementById('tt').classList.toggle('on',oh);document.getElementById('tl').textContent=oh?'Yes':'No'}
+function runDemo(){
+  const a=parseInt(document.getElementById('dA').value)||0;
+  const i=parseInt(document.getElementById('dI').value)||0;
+  let sc=0;
+  if(a>100)sc+=3;else if(a>50)sc+=2;else if(a>20)sc+=1;
+  if(i>10)sc+=3;else if(i>5)sc+=2;else if(i>3)sc+=1;
+  if(oh)sc+=2;
+  const r=i>0?(a/i).toFixed(1):0;
+  const iso=Math.min(.99,(sc*.12+Math.random()*.04)).toFixed(2);
+  const cl=sc>=5?'tcrit':sc>=3?'twarn':'tok';
+  document.getElementById('tb').innerHTML=`<span class="tinfo">[MODEL]</span> Loading Isolation Forest weights...<br><span class="tinfo">[DATA]</span> Parsing → attempts:${a} | ips:${i} | off_hours:${oh}<br><span class="tinfo">[FEAT]</span> login_rate=${a}/hr | ip_entropy=${i} | ratio=${r} | temporal=${oh?1:0}<br><span class="tinfo">[MODEL]</span> Running anomaly scoring...<br><span class="${cl}">[RESULT]</span> Anomaly score: <strong>${iso}</strong> | Threshold: 0.50<br><span class="${cl}">[STATUS]</span> ${sc>=5?'CRITICAL — Flagging for SOC review':sc>=3?'SUSPICIOUS — Elevated monitoring':'NORMAL — Pattern within baseline'}`;
+  const dr=document.getElementById('dr');
+  dr.style.display='block';
+  if(sc>=5){dr.className='demo-result rcrit';dr.textContent='🚨 CRITICAL ANOMALY — SOC Alert Triggered'}
+  else if(sc>=3){dr.className='demo-result rwarn';dr.textContent='⚡ SUSPICIOUS ACTIVITY — Elevated Monitoring'}
+  else{dr.className='demo-result rsafe';dr.textContent='✓ NORMAL — No anomalies detected'}
+}
+
+// CHATBOT
+const R={
+  "background":"Pramod has 12+ years in Security Operations — managing SIEM systems in Tier-III data centers, monitoring 100+ CCTV feeds, and handling real-time threat response. He's currently advancing into AI/ML through IIT Patna's program and applying it directly to SOC automation.",
+  "project":"Pramod has built 3 applied AI projects: (1) Security Log Anomaly Detection using Isolation Forest — detected 12 real suspicious logins, cut review time by 40%. (2) PII Detection System using Python/Pandas for GDPR compliance. (3) Automated KPI Tracker that cut reporting from 4 hours to 3 minutes.",
+  "role":"Pramod is targeting AI SOC Analyst, Security Data Analyst, and Threat Intelligence roles — hybrid positions where deep security domain knowledge meets Python/ML capabilities. Open to relocation across India.",
+  "isolation":"Isolation Forest is an unsupervised ML algorithm that detects anomalies by randomly isolating data points. Unusual behavior gets isolated faster than normal behavior. Pramod uses it to detect suspicious login patterns in access-control logs — no labeled data needed, perfect for security use cases.",
+  "relocation":"Yes! Pramod is fully open to relocation anywhere in India for high-impact opportunities in AI-driven security operations or data analytics roles.",
+  "iit":"Pramod is currently in the Applied AI & ML Essentials program at IIT Patna's Vishlesan i-Hub (2025–2026). He's applying everything directly to real SOC automation problems.",
+  "contact":"Reach Pramod at pramodj551@gmail.com or connect on LinkedIn: linkedin.com/in/pramod-jadhav-42ba2281 | GitHub: github.com/pramodj551-oss"
+};
+async function sm(){
+  const inp=document.getElementById('ci'),win=document.getElementById('cw'),btn=document.getElementById('sb');
+  const t=inp.value.trim();if(!t)return;
+  const ud=document.createElement('div');ud.className='msg user';ud.textContent=t;win.appendChild(ud);inp.value='';win.scrollTop=win.scrollHeight;btn.disabled=true;btn.textContent='...';
+  const lo=t.toLowerCase();
+  let rep="Great question! For more details about Pramod's experience, email pramodj551@gmail.com — he'd love to connect!";
+  for(const[k,v]of Object.entries(R)){if(lo.includes(k)){rep=v;break}}
+  await new Promise(r=>setTimeout(r,800));
+  const bd=document.createElement('div');bd.className='msg bot';bd.innerHTML=`<div class="bot-tag">PRAMOD.AI</div>${rep}`;win.appendChild(bd);win.scrollTop=win.scrollHeight;btn.disabled=false;btn.textContent='Send';
+}
+function qs(el){document.getElementById('ci').value=el.textContent;sm()}
+</script>
+</body>
+</html>
