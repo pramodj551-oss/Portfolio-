@@ -256,7 +256,9 @@ footer{background:var(--surf);border-top:1px solid var(--border);padding:52px 6%
     <div class="sk"><div class="sk-top"><div class="sk-name">CCTV &amp; Physical Security</div><div class="sk-badge expert">Expert</div></div><div class="sk-desc">Monitored 100+ live feeds using Milestone X-Protect and Solus. Tier-III data center physical security management.</div><div class="sk-bar"><div class="sk-fill" data-w="96" style="background:linear-gradient(90deg,var(--g1),var(--g2))"></div></div><div class="sk-pct">96%</div></div>
     <div class="sk"><div class="sk-top"><div class="sk-name">Python &amp; Automation</div><div class="sk-badge advancing">Advancing</div></div><div class="sk-desc">Pandas, NumPy, log parsing, automation scripts. Building practical security tools applied to real SOC workflows at IIT Patna.</div><div class="sk-bar"><div class="sk-fill" data-w="52" style="background:linear-gradient(90deg,var(--b1),var(--b2))"></div></div><div class="sk-pct">52%</div></div>
     <div class="sk"><div class="sk-top"><div class="sk-name">Machine Learning</div><div class="sk-badge applied">Applied</div></div><div class="sk-desc">Scikit-Learn, Isolation Forest (unsupervised anomaly detection), classification basics. Applied to real security datasets.</div><div class="sk-bar"><div class="sk-fill" data-w="42" style="background:linear-gradient(90deg,var(--y1),var(--r1))"></div></div><div class="sk-pct">42%</div></div>
-    <div class="sk"><div class="sk-top"><div class="sk-name">Data Analysis &amp; EDA</div><div class="sk-badge applied">Applied</div></div><div class="sk-desc">Pattern recognition, anomaly detection, exploratory data analysis with Pandas and Matplotlib on security log datasets.</div><div class="sk-bar"><div class="sk-fill" data-w="48" style="background:linear-gradient(90deg,var(--y1),var(--r1))"></div></div><div class="sk-pct">48%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">TensorFlow / Keras</div><div class="sk-badge applied">Applied</div></div><div class="sk-desc">Deep learning model architectures — Stacked Autoencoder, LSTM Autoencoder, VAE. Hyperparameter tuning with Keras Tuner.</div><div class="sk-bar"><div class="sk-fill" data-w="38" style="background:linear-gradient(90deg,var(--y1),var(--r1))"></div></div><div class="sk-pct">38%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">Flask &amp; REST APIs</div><div class="sk-badge applied">Applied</div></div><div class="sk-desc">REST API development for ML model inference. Real-time anomaly scoring endpoints consumed by SOC dashboards.</div><div class="sk-bar"><div class="sk-fill" data-w="35" style="background:linear-gradient(90deg,var(--y1),var(--r1))"></div></div><div class="sk-pct">35%</div></div>
+    <div class="sk"><div class="sk-top"><div class="sk-name">Streamlit &amp; Plotly</div><div class="sk-badge applied">Applied</div></div><div class="sk-desc">SOC analyst dashboards with real-time anomaly feeds, trend charts, and alert views — built with Streamlit and Plotly.</div><div class="sk-bar"><div class="sk-fill" data-w="40" style="background:linear-gradient(90deg,var(--y1),var(--r1))"></div></div><div class="sk-pct">40%</div></div>
   </div>
 </section>
 
@@ -315,14 +317,14 @@ footer{background:var(--surf);border-top:1px solid var(--border);padding:52px 6%
   <h2 class="sec-title">AI Security<br><span style="background:linear-gradient(135deg,var(--b2),var(--r1));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Projects</span></h2>
   <div class="proj-grid">
     <div class="proj-card">
-      <div class="proj-tag">Python + ML</div>
-      <div class="proj-title">Security Log Anomaly Detection</div>
-      <div class="proj-desc">Unsupervised ML model that automatically detects suspicious login behavior patterns in enterprise access-control logs — replacing manual triage.</div>
-      <div class="proj-row"><div class="proj-rl prob">Problem</div><div class="proj-rt">Manual review of 50,000+ logs/month missed subtle intrusion patterns.</div></div>
-      <div class="proj-row"><div class="proj-rl sol">Solution</div><div class="proj-rt">Isolation Forest model (Scikit-Learn) to detect outliers in login behavior across access-control logs.</div></div>
-      <div class="proj-row"><div class="proj-rl imp">Impact</div><div class="proj-rt">12 confirmed suspicious events detected. SOC review time reduced by 40%.</div></div>
-      <div class="proj-tech"><span class="tc">Python</span><span class="tc">Pandas</span><span class="tc">Scikit-Learn</span><span class="tc">Isolation Forest</span><span class="tc">Jupyter</span></div>
-      <a href="https://github.com/pramodj551-oss/security-log-anomaly-detection" target="_blank" class="proj-link">View on GitHub →</a>
+      <div class="proj-tag">Deep Learning + API</div>
+      <div class="proj-title">Login Anomaly Detection System</div>
+      <div class="proj-desc">Production-grade deep learning pipeline — three model architectures, hyperparameter tuning, Flask REST API for real-time inference, and a live Streamlit SOC dashboard. Built as part of IIT Patna AI/ML program.</div>
+      <div class="proj-row"><div class="proj-rl prob">Problem</div><div class="proj-rt">50,000+ monthly login events manually reviewed — subtle intrusion patterns routinely missed.</div></div>
+      <div class="proj-row"><div class="proj-rl sol">Solution</div><div class="proj-rt">Stacked Autoencoder, LSTM Autoencoder, and VAE ensemble — tuned with Keras Tuner. Flask REST API for real-time scoring. Streamlit SOC dashboard with Plotly visualizations.</div></div>
+      <div class="proj-row"><div class="proj-rl imp">Impact</div><div class="proj-rt">92% precision. SOC analyst review time cut by 40%. Fully deployable API.</div></div>
+      <div class="proj-tech"><span class="tc">TensorFlow</span><span class="tc">Keras</span><span class="tc">Flask</span><span class="tc">Streamlit</span><span class="tc">Plotly</span><span class="tc">Keras Tuner</span><span class="tc">Pandas</span></div>
+      <a href="https://github.com/pramodj551-oss/login-anomaly-detection" target="_blank" class="proj-link">View on GitHub →</a>
     </div>
     <div class="proj-card">
       <div class="proj-tag">Python + Privacy</div>
@@ -441,25 +443,55 @@ function runDemo(){
   else{dr.className='demo-result rsafe';dr.textContent='✓ NORMAL — No anomalies detected'}
 }
 
-// CHATBOT
-const R={
-  "background":"Pramod has 12+ years in Security Operations — managing SIEM systems in Tier-III data centers, monitoring 100+ CCTV feeds, and handling real-time threat response. He's currently advancing into AI/ML through IIT Patna's program and applying it directly to SOC automation.",
-  "project":"Pramod has built 3 applied AI projects: (1) Security Log Anomaly Detection using Isolation Forest — detected 12 real suspicious logins, cut review time by 40%. (2) PII Detection System using Python/Pandas for GDPR compliance. (3) Automated KPI Tracker that cut reporting from 4 hours to 3 minutes.",
-  "role":"Pramod is targeting AI SOC Analyst, Security Data Analyst, and Threat Intelligence roles — hybrid positions where deep security domain knowledge meets Python/ML capabilities. Open to relocation across India.",
-  "isolation":"Isolation Forest is an unsupervised ML algorithm that detects anomalies by randomly isolating data points. Unusual behavior gets isolated faster than normal behavior. Pramod uses it to detect suspicious login patterns in access-control logs — no labeled data needed, perfect for security use cases.",
-  "relocation":"Yes! Pramod is fully open to relocation anywhere in India for high-impact opportunities in AI-driven security operations or data analytics roles.",
-  "iit":"Pramod is currently in the Applied AI & ML Essentials program at IIT Patna's Vishlesan i-Hub (2025–2026). He's applying everything directly to real SOC automation problems.",
-  "contact":"Reach Pramod at pramodj551@gmail.com or connect on LinkedIn: linkedin.com/in/pramod-jadhav-42ba2281 | GitHub: github.com/pramodj551-oss"
-};
+// CHATBOT — Claude API
+const SYSTEM = `You are Pramod Jadhav's AI portfolio assistant. Answer questions about Pramod concisely and professionally in 2-4 sentences max.
+
+About Pramod:
+- 12+ years in Security Operations (SOC) in India
+- Currently Security Operations Officer (DGR) at AP Securitas, Godrej IT Park, Mumbai (Oct 2025–present)
+- Previously SOC Analyst & Security Supervisor at SIS Security / NTT Global Data Centre (2022–2025)
+- Enrolled in IIT Patna Applied AI & ML Essentials program at Vishlesan i-Hub (2025–2026)
+- GitHub: github.com/pramodj551-oss | Email: pramodj551@gmail.com
+- LinkedIn: linkedin.com/in/pramod-jadhav-42ba2281
+- Location: Vidyavihar / Thane, Mumbai. Open to relocation anywhere in India.
+
+Projects:
+1. Login Anomaly Detection System — production-grade deep learning pipeline with Stacked Autoencoder, LSTM Autoencoder, and Variational Autoencoder (VAE). Keras Tuner for hyperparameter optimization. Flask REST API for real-time inference. Streamlit SOC dashboard with Plotly. 92% precision, 40% analyst review time reduced.
+2. PII Detection & Privacy Compliance — Python/Pandas/Regex scanner for GDPR-aligned dataset auditing across enterprise datasets.
+3. Automated KPI & Metrics Tracker — Python + Matplotlib dashboards. Report generation cut from 4 hours to 3 minutes. Saves 200+ hours/year.
+
+Skills: SOC operations (expert, 12+ yrs), SIEM/log analysis (expert), CCTV/physical security expert (Milestone X-Protect, Solus), Python/automation (advancing), TensorFlow/Keras deep learning (applied), Scikit-Learn ML (applied), Flask REST APIs (applied), Streamlit dashboards (applied), Pandas/data analysis (applied).
+
+Targeting: AI SOC Analyst, Security Data Analyst, Threat Intelligence roles — positions where deep security domain knowledge meets Python/ML.
+
+Keep answers warm, confident, and concise. Highlight his unique combination: 12 years of real security expertise + growing AI/ML skills applied to actual SOC problems.`;
+
 async function sm(){
   const inp=document.getElementById('ci'),win=document.getElementById('cw'),btn=document.getElementById('sb');
   const t=inp.value.trim();if(!t)return;
-  const ud=document.createElement('div');ud.className='msg user';ud.textContent=t;win.appendChild(ud);inp.value='';win.scrollTop=win.scrollHeight;btn.disabled=true;btn.textContent='...';
-  const lo=t.toLowerCase();
-  let rep="Great question! For more details about Pramod's experience, email pramodj551@gmail.com — he'd love to connect!";
-  for(const[k,v]of Object.entries(R)){if(lo.includes(k)){rep=v;break}}
-  await new Promise(r=>setTimeout(r,800));
-  const bd=document.createElement('div');bd.className='msg bot';bd.innerHTML=`<div class="bot-tag">PRAMOD.AI</div>${rep}`;win.appendChild(bd);win.scrollTop=win.scrollHeight;btn.disabled=false;btn.textContent='Send';
+  const ud=document.createElement('div');ud.className='msg user';ud.textContent=t;win.appendChild(ud);
+  inp.value='';win.scrollTop=win.scrollHeight;btn.disabled=true;btn.textContent='...';
+  // typing indicator
+  const ti=document.createElement('div');ti.className='msg bot';ti.innerHTML='<div class="bot-tag">PRAMOD.AI</div><span style="color:var(--muted);font-style:italic">Thinking...</span>';
+  win.appendChild(ti);win.scrollTop=win.scrollHeight;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:SYSTEM,
+        messages:[{role:'user',content:t}]
+      })
+    });
+    const data=await res.json();
+    const reply=data.content?.map(b=>b.text||'').join('')||'Sorry, I had trouble connecting. Email pramodj551@gmail.com directly!';
+    ti.innerHTML=`<div class="bot-tag">PRAMOD.AI</div>${reply}`;
+  }catch(e){
+    ti.innerHTML='<div class="bot-tag">PRAMOD.AI</div>Network error — please email pramodj551@gmail.com directly!';
+  }
+  win.scrollTop=win.scrollHeight;btn.disabled=false;btn.textContent='Send';
 }
 function qs(el){document.getElementById('ci').value=el.textContent;sm()}
 </script>
