@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pramod Prakash Jadhav | AI-Augmented SOC Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #080c10;
+  --bg2: #0d1219;
+  --bg3: #111820;
+  --green: #00e5a0;
+  --green2: #00b87a;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --blue: #38bdf8;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --border: rgba(0,229,160,0.12);
+  --card: rgba(255,255,255,0.03);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--green2);border-radius:2px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(8,12,16,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--green);letter-spacing:0.05em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:0.82rem;color:var(--muted);text-decoration:none;font-family:'DM Mono',monospace;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--green);color:#000;padding:7px 18px;border-radius:4px;font-size:0.8rem;font-weight:600;text-decoration:none;font-family:'DM Mono',monospace;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,160,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(0,229,160,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-content{max-width:700px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);padding:6px 14px;border-radius:100px;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--green);margin-bottom:28px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.8rem,6vw,4.5rem);line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px}
+h1 span{color:var(--green)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:540px;margin-bottom:36px;line-height:1.7}
+.hero-sub strong{color:var(--text);font-weight:500}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{background:var(--green);color:#000;padding:12px 28px;border-radius:6px;font-weight:700;text-decoration:none;font-size:0.9rem;transition:all 0.2s;font-family:'Syne',sans-serif}
+.btn-primary:hover{opacity:0.9;transform:translateY(-1px)}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:12px 28px;border-radius:6px;font-weight:500;text-decoration:none;font-size:0.9rem;transition:all 0.2s;backdrop-filter:blur(8px)}
+.btn-secondary:hover{border-color:var(--green);color:var(--green)}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+.stat-item{font-family:'DM Mono',monospace}
+.stat-num{font-size:1.8rem;font-weight:500;color:var(--green);display:block;line-height:1}
+.stat-label{font-size:0.72rem;color:var(--muted);margin-top:4px}
+
+/* ── SECTIONS ── */
+section{padding:90px 5%}
+.section-tag{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-tag::after{content:'';flex:1;max-width:60px;height:1px;background:var(--green);opacity:0.4}
+h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;letter-spacing:-0.02em;margin-bottom:16px}
+h2 span{color:var(--green)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:50px}
+.about-text p{color:rgba(226,232,240,0.75);line-height:1.8;margin-bottom:16px;font-size:0.97rem}
+.about-text p strong{color:var(--text)}
+.about-quote{border-left:3px solid var(--green);padding:16px 20px;background:rgba(0,229,160,0.04);border-radius:0 8px 8px 0;margin-top:24px;font-style:italic;color:var(--text);font-size:0.95rem}
+.about-cards{display:flex;flex-direction:column;gap:14px}
+.about-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 22px;transition:border-color 0.2s}
+.about-card:hover{border-color:rgba(0,229,160,0.3)}
+.about-card-icon{font-size:1.4rem;margin-bottom:8px}
+.about-card h4{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:4px;color:var(--text)}
+.about-card p{font-size:0.8rem;color:var(--muted);line-height:1.5}
+
+/* ── SKILLS ── */
+.skills-bg{background:var(--bg2)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:48px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s}
+.skill-card:hover{border-color:rgba(0,229,160,0.35);transform:translateY(-3px)}
+.skill-card-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.skill-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.skill-icon.sec{background:rgba(239,68,68,0.12)}
+.skill-icon.ai{background:rgba(0,229,160,0.1)}
+.skill-icon.data{background:rgba(56,189,248,0.1)}
+.skill-icon.dev{background:rgba(245,158,11,0.1)}
+.skill-card h3{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{font-family:'DM Mono',monospace;font-size:0.68rem;padding:4px 10px;border-radius:4px;background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid rgba(255,255,255,0.08)}
+.tag.green{background:rgba(0,229,160,0.08);color:var(--green);border-color:rgba(0,229,160,0.2)}
+
+/* ── EXPERIENCE ── */
+.timeline{margin-top:48px;position:relative}
+.timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--green),transparent)}
+.tl-item{display:grid;grid-template-columns:40px 1fr;gap:24px;margin-bottom:40px}
+.tl-dot{width:38px;height:38px;border-radius:50%;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;background:var(--bg);font-size:0.8rem;flex-shrink:0;position:relative;z-index:1}
+.tl-content{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 24px;transition:border-color 0.2s}
+.tl-content:hover{border-color:rgba(0,229,160,0.3)}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.tl-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--text)}
+.tl-date{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);background:rgba(0,229,160,0.08);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.tl-company{font-size:0.85rem;color:var(--muted);margin-bottom:12px;font-style:italic}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tl-bullets li{font-size:0.85rem;color:rgba(226,232,240,0.7);padding-left:16px;position:relative;line-height:1.6}
+.tl-bullets li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:0.7rem;top:3px}
+.tl-bullets li strong{color:var(--text)}
+
+/* ── PROJECTS ── */
+.projects-bg{background:var(--bg2)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px;margin-top:48px}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;transition:all 0.3s;display:flex;flex-direction:column}
+.project-card:hover{border-color:rgba(0,229,160,0.35);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.project-icon{font-size:1.8rem;margin-bottom:14px}
+.project-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:8px;color:var(--text)}
+.project-card p{font-size:0.84rem;color:var(--muted);line-height:1.65;margin-bottom:16px;flex:1}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.project-links{display:flex;gap:10px}
+.link-btn{font-family:'DM Mono',monospace;font-size:0.72rem;padding:6px 14px;border-radius:5px;text-decoration:none;transition:all 0.2s}
+.link-btn.primary{background:var(--green);color:#000;font-weight:600}
+.link-btn.primary:hover{opacity:0.85}
+.link-btn.secondary{border:1px solid var(--border);color:var(--muted)}
+.link-btn.secondary:hover{border-color:var(--green);color:var(--green)}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--green);background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);padding:2px 8px;border-radius:100px;margin-bottom:10px;width:fit-content}
+.live-badge::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:48px}
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color 0.2s}
+.edu-card:hover{border-color:rgba(0,229,160,0.3)}
+.edu-year{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);margin-bottom:8px}
+.edu-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:4px}
+.edu-card .inst{font-size:0.83rem;color:var(--muted);margin-bottom:8px}
+.edu-card .grade{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--amber)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:24px}
+.cert-item{background:rgba(0,229,160,0.04);border:1px solid rgba(0,229,160,0.12);border-radius:8px;padding:12px 16px;font-size:0.82rem;display:flex;align-items:center;gap:10px}
+.cert-item span{color:var(--muted)}
+
+/* ── CONTACT ── */
+.contact-bg{background:var(--bg2)}
+.contact-inner{max-width:640px;margin:0 auto;text-align:center}
+.contact-inner p{color:var(--muted);font-size:0.97rem;margin-bottom:36px;line-height:1.7}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+.contact-link{display:flex;align-items:center;gap:8px;padding:12px 22px;border-radius:8px;text-decoration:none;font-size:0.85rem;border:1px solid var(--border);color:var(--text);transition:all 0.2s;font-family:'DM Mono',monospace}
+.contact-link:hover{border-color:var(--green);color:var(--green);background:rgba(0,229,160,0.04)}
+.contact-link.email{background:var(--green);color:#000;border-color:var(--green);font-weight:600}
+.contact-link.email:hover{opacity:0.9}
+
+/* ── FOOTER ── */
+footer{padding:28px 5%;text-align:center;border-top:1px solid var(--border)}
+footer p{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted)}
+footer a{color:var(--green);text-decoration:none}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  h1{font-size:2.4rem}
+  .tl-item{grid-template-columns:1fr}
+  .timeline::before{display:none}
+  .tl-dot{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">PRAMOD.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#education">education</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <a href="mailto:pramodj551@gmail.com" class="nav-cta">hire me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Open to Work — AI + Security Roles</div>
+    <h1>PRAMOD<br/><span>PRAKASH</span><br/>JADHAV</h1>
+    <p class="hero-sub">
+      <strong>AI-Augmented SOC Analyst</strong> — 12+ years securing critical infrastructure.
+      Now building <strong>ML-powered threat detection tools</strong> at IIT Patna.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">12+</span><div class="stat-label">Years SOC Exp.</div></div>
+      <div class="stat-item"><span class="stat-num">5</span><div class="stat-label">Live AI Projects</div></div>
+      <div class="stat-item"><span class="stat-num">40%</span><div class="stat-label">Incident Reduction</div></div>
+      <div class="stat-item"><span class="stat-num">50K+</span><div class="stat-label">Logs Analysed/Mo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">about me</div>
+  <h2>Security Expert. <span>AI In Progress.</span></h2>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I spent <strong>12+ years on the front lines of Security Operations</strong> — managing SOC at NTT Global's Tier-III Data Centre, monitoring 100+ CCTV feeds, and responding to real threats in real time.</p>
+      <p>That decade gave me something no course can teach: <strong>deep threat intuition</strong>. I know what a real intrusion looks like. Now I'm teaching machines to see the same patterns.</p>
+      <p>Currently advancing through the <strong>Applied AI & ML Essentials programme at IIT Patna (Vishlesan i-Hub)</strong>, building Python-based SOC automation tools that bridge security expertise with machine learning.</p>
+      <div class="about-quote">"12 years reading security logs manually. Now I build the tools that do it automatically."</div>
+    </div>
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="about-card-icon">🏢</div>
+        <h4>Current Role</h4>
+        <p>Security Operations Officer (DGR) at AP Securitas — Godrej IT Park, Mumbai</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🎓</div>
+        <h4>Learning</h4>
+        <p>Applied AI & ML Essentials — IIT Patna (Vishlesan i-Hub), 2025–2026</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">📍</div>
+        <h4>Location</h4>
+        <p>Thane, Mumbai — Open to Relocation across India</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🎯</div>
+        <h4>Seeking</h4>
+        <p>AI-Augmented SOC Analyst · Security Data Analyst · Threat Intelligence Analyst</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="section-tag">tech stack</div>
+  <h2>What I <span>Know</span></h2>
+  <div class="skills-grid fade-up">
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon sec">🔐</div>
+        <h3>Security Operations</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tag green">SOC Operations</span>
+        <span class="tag">Incident Response</span>
+        <span class="tag">Threat Detection</span>
+        <span class="tag">Milestone X-Protect</span>
+        <span class="tag">Solus Access Control</span>
+        <span class="tag">CCTV Surveillance</span>
+        <span class="tag">Access Log Auditing</span>
+        <span class="tag">Escalation Management</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon ai">🤖</div>
+        <h3>AI / Machine Learning</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tag green">Isolation Forest</span>
+        <span class="tag green">Anomaly Detection</span>
+        <span class="tag">Scikit-Learn</span>
+        <span class="tag">Random Forest</span>
+        <span class="tag">Logistic Regression</span>
+        <span class="tag">Feature Engineering</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">FAISS</span>
+        <span class="tag">RAG Pipelines</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon data">📊</div>
+        <h3>Data & Visualisation</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tag green">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Plotly</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">EDA</span>
+        <span class="tag">Log Analysis</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon dev">⚙️</div>
+        <h3>Dev Tools</h3>
+      </div>
+      <div class="skill-tags">
+        <span class="tag green">Jupyter Notebooks</span>
+        <span class="tag">Flask</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">SQL</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Qwen 2.5</span>
+        <span class="tag">Prompt Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">career timeline</div>
+  <h2>Professional <span>Experience</span></h2>
+  <div class="timeline fade-up">
+    <div class="tl-item">
+      <div class="tl-dot">🔐</div>
+      <div class="tl-content">
+        <div class="tl-header">
+          <div class="tl-title">Security Operations Officer (DGR)</div>
+          <div class="tl-date">Oct 2025 – Present</div>
+        </div>
+        <div class="tl-company">AP Securitas Pvt. Ltd. — Godrej IT Park, Mumbai</div>
+        <ul class="tl-bullets">
+          <li>Enforcing access-control and surveillance protocols at a high-footfall corporate IT park.</li>
+          <li><strong>Python automation scripts</strong> to flag anomalous access-log patterns — reducing manual review time by 40%.</li>
+          <li>Applying IIT Patna ML concepts to identify access anomalies and build predictive risk models.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">🏢</div>
+      <div class="tl-content">
+        <div class="tl-header">
+          <div class="tl-title">SOC Operator & Security Supervisor</div>
+          <div class="tl-date">2022 – 2025</div>
+        </div>
+        <div class="tl-company">SIS Security — NTT Global Data Centre (Tier-III), Mumbai</div>
+        <ul class="tl-bullets">
+          <li>Operated 24/7 SOC overseeing <strong>100+ live surveillance feeds</strong> in a critical data centre.</li>
+          <li>Optimised Solus workflows → <strong>30% reduction</strong> in unauthorised access violations, 100% uptime.</li>
+          <li>Managed real-time incident triage, vendor access coordination, security alert escalation.</li>
+          <li>Manual log analysis identified recurring intrusion patterns — now automated with Python.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">🛣️</div>
+      <div class="tl-content">
+        <div class="tl-header">
+          <div class="tl-title">Operations Supervisor — MEP Infrastructure</div>
+          <div class="tl-date">2020 – 2022</div>
+        </div>
+        <div class="tl-company">MSRDC Undertaking — Mulund LBS Toll Plaza, Mumbai</div>
+        <ul class="tl-bullets">
+          <li>Managed MEP infrastructure operations and team productivity at large-scale public site.</li>
+          <li>Coordinated with vendors — <strong>zero-downtime SLA</strong> maintained. 100% compliance reporting.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">🛡️</div>
+      <div class="tl-content">
+        <div class="tl-header">
+          <div class="tl-title">Corporate Security Guard & Team Lead</div>
+          <div class="tl-date">2016 – 2020</div>
+        </div>
+        <div class="tl-company">SIS Security / NISA — Accenture, TCL, MCX, Mumbai</div>
+        <ul class="tl-bullets">
+          <li>Delivered comprehensive security for Tier-1 clients — Accenture (Airoli), TCL (Lower Parel), MCX.</li>
+          <li>CCTV audits, access-point management, emergency evacuation drills — <strong>zero-incident record</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-bg">
+  <div class="section-tag">portfolio</div>
+  <h2>Live <span>Projects</span></h2>
+  <div class="projects-grid fade-up">
+
+    <div class="project-card">
+      <div class="live-badge">LIVE</div>
+      <div class="project-icon">🔍</div>
+      <h3>Security Log Anomaly Detection</h3>
+      <p>Unsupervised ML system using Isolation Forest to detect suspicious login patterns in 50,000+ enterprise access logs. Live interactive SOC dashboard with CRITICAL/HIGH/MEDIUM severity alerts.</p>
+      <div class="project-tech">
+        <span class="tag green">Isolation Forest</span>
+        <span class="tag">Python</span><span class="tag">Pandas</span>
+        <span class="tag">Scikit-Learn</span><span class="tag">Streamlit</span>
+      </div>
+      <div class="project-links">
+        <a href="https://security-log-anomaly-detection-cfstcltdyputfjfhgdjlbu.streamlit.app/" target="_blank" class="link-btn primary">Live Demo</a>
+        <a href="https://github.com/pramodj551-oss/security-log-anomaly-detection" target="_blank" class="link-btn secondary">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="live-badge">LIVE</div>
+      <div class="project-icon">📈</div>
+      <h3>BankBeES Stock Price Predictor</h3>
+      <p>Random Forest regression model predicting Nifty Bank BeES ETF daily closing prices. Features OHLCV + MA10/MA50 + volatility indicators. Candlestick charts and feature importance analysis.</p>
+      <div class="project-tech">
+        <span class="tag green">Random Forest</span>
+        <span class="tag">Python</span><span class="tag">Scikit-Learn</span>
+        <span class="tag">Plotly</span><span class="tag">Streamlit</span>
+      </div>
+      <div class="project-links">
+        <a href="https://bankbees-stock-predictor-kx2xe5wjjd4wd8b5ylbqpv.streamlit.app/" target="_blank" class="link-btn primary">Live Demo</a>
+        <a href="https://github.com/pramodj551-oss/BankBeES-Stock-Predictor" target="_blank" class="link-btn secondary">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="live-badge">LIVE</div>
+      <div class="project-icon">🤖</div>
+      <h3>AI Content Creator — RAG Pipeline</h3>
+      <p>Fully local Retrieval-Augmented Generation pipeline using LangChain + FAISS + Qwen 2.5 for context-aware educational queries. Privacy-first — no external API needed.</p>
+      <div class="project-tech">
+        <span class="tag green">RAG</span>
+        <span class="tag">LangChain</span><span class="tag">FAISS</span>
+        <span class="tag">Qwen 2.5</span><span class="tag">Python</span>
+      </div>
+      <div class="project-links">
+        <a href="https://ai-content-creator-rag-ipz5vrvxuykxd89rktmove.streamlit.app/" target="_blank" class="link-btn primary">Live Demo</a>
+        <a href="https://github.com/pramodj551-oss/AI-Content-Creator-RAG" target="_blank" class="link-btn secondary">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="live-badge">LIVE</div>
+      <div class="project-icon">🌍</div>
+      <h3>GDP Data Dashboard</h3>
+      <p>Interactive global economic data dashboard visualising GDP trends across countries with time-series analysis and country comparisons. Live on Streamlit Cloud.</p>
+      <div class="project-tech">
+        <span class="tag green">Streamlit</span>
+        <span class="tag">Plotly</span><span class="tag">Pandas</span>
+        <span class="tag">Python</span>
+      </div>
+      <div class="project-links">
+        <a href="https://gdp-dashboard-i9t79zrtnot.streamlit.app/" target="_blank" class="link-btn primary">Live Demo</a>
+        <a href="https://github.com/pramodj551-oss/gdp-dashboard" target="_blank" class="link-btn secondary">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🔒</div>
+      <h3>PII Detection & GDPR Compliance</h3>
+      <p>ML classifier detecting 7 types of PII (Aadhaar, PAN, Email, Phone) in enterprise datasets. Built for data-privacy compliance audits aligned with GDPR/DPDP Act.</p>
+      <div class="project-tech">
+        <span class="tag green">Logistic Regression</span>
+        <span class="tag">Python</span><span class="tag">Pandas</span>
+        <span class="tag">Scikit-Learn</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/pramodj551-oss/pii-detection-compliance" target="_blank" class="link-btn primary">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-tag">qualifications</div>
+  <h2>Education & <span>Certifications</span></h2>
+  <div class="edu-grid fade-up">
+    <div class="edu-card">
+      <div class="edu-year">2025 – 2026</div>
+      <h3>Applied AI & ML Essentials</h3>
+      <div class="inst">IIT Patna — Vishlesan i-Hub</div>
+      <div class="grade">✦ In Progress</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2014</div>
+      <h3>N.C.V.T. Fitter</h3>
+      <div class="inst">Siemens Ltd., Thane</div>
+      <div class="grade">73.46%</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2012</div>
+      <h3>I.T.I. Fitter</h3>
+      <div class="inst">I.T.I. Mulund, Mumbai</div>
+      <div class="grade">73.15%</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2010 / 2008</div>
+      <h3>H.S.C. & S.S.C.</h3>
+      <div class="inst">Mumbai Board</div>
+      <div class="grade">Maharashtra State Board</div>
+    </div>
+  </div>
+  <div class="cert-grid fade-up" style="margin-top:32px">
+    <div class="cert-item">🔐 <span>Basic Security Operations — NISA</span></div>
+    <div class="cert-item">🔥 <span>Fire Safety & Emergency Response — SIS</span></div>
+    <div class="cert-item">🩺 <span>First Aid Training — TSDC Siemens</span></div>
+    <div class="cert-item">⚙️ <span>CNC Lathe Programming — Mulund ITI</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-bg">
+  <div class="contact-inner fade-up">
+    <div class="section-tag" style="justify-content:center">get in touch</div>
+    <h2>Let's <span>Connect</span></h2>
+    <p>Open to AI-Augmented SOC Analyst, Security Data Analyst, and Threat Intelligence roles. Available for hybrid or relocation across India.</p>
+    <div class="contact-links">
+      <a href="mailto:pramodj551@gmail.com" class="contact-link email">✉ pramodj551@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pramod-prakash-jadhav-42ba2281" target="_blank" class="contact-link">in LinkedIn</a>
+      <a href="https://github.com/pramodj551-oss" target="_blank" class="contact-link">⌥ GitHub</a>
+      <a href="https://share.streamlit.io/user/pramodj551-oss" target="_blank" class="contact-link">▶ Streamlit Apps</a>
+    </div>
+    <p style="font-size:0.82rem;color:var(--muted)">📍 Thane, Mumbai &nbsp;·&nbsp; +91 88504 27883 &nbsp;·&nbsp; Open to Relocation</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by <a href="https://www.linkedin.com/in/pramod-prakash-jadhav-42ba2281">Pramod Prakash Jadhav</a> · Applied AI & ML Essentials · IIT Patna (Vishlesan i-Hub) · <a href="https://github.com/pramodj551-oss">github.com/pramodj551-oss</a></p>
+</footer>
+
+<script>
+// Fade-up animation on scroll
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+},{threshold:0.1})
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el))
+
+// Animate stat numbers
+function animateNum(el, target, suffix=''){
+  let start=0, dur=2000, step=dur/60
+  const inc = target/60
+  const timer = setInterval(()=>{
+    start = Math.min(start+inc, target)
+    el.textContent = (Number.isInteger(target)?Math.floor(start):start.toFixed(0)) + suffix
+    if(start>=target) clearInterval(timer)
+  }, step)
+}
+const statObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const nums = e.target.querySelectorAll('.stat-num')
+      nums[0]&&animateNum(nums[0],12,'+')
+      nums[1]&&animateNum(nums[1],5)
+      nums[2]&&animateNum(nums[2],40,'%')
+      nums[3]&&animateNum(nums[3],50,'K+')
+      statObs.disconnect()
+    }
+  })
+},{threshold:0.5})
+const hero = document.querySelector('.hero-stats')
+if(hero) statObs.observe(hero)
+</script>
+</body>
+</html>
