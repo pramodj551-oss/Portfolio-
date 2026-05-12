@@ -30,7 +30,7 @@
 | **Open To** | Data Analyst · AI SOC Analyst · Security Data Analyst |
 | **GitHub** | [pramodj551-oss](https://github.com/pramodj551-oss) |
 | **LinkedIn** | [Pramod Prakash Jadhav](https://www.linkedin.com/in/pramod-prakash-jadhav-42ba2281) |
-| **Portfolio** | [pramodjadhav.vercel.app]([https://pramodjadhav.vercel.app/) |
+| **Portfolio** | [pramodjadhav.vercel.app](https://pramodjadhav.vercel.app/) |
 
 ---
 
