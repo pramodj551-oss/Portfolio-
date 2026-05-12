@@ -1,0 +1,57 @@
+PRAMOD PRAKASH JADHAV
+AI-Augmented SOC Analyst  |  Security Operations  |  Python & ML for Cybersecurity
+📍 Thane, Mumbai  |  📞 +91 88504 27883  |  ✉ pramodj551@gmail.com
+🔗 linkedin.com/in/pramod-jadhav-42ba2281  |  💻 github.com/pramodj551-oss  |  🌐 portfolio-eta-ashen-pxpaf816ec.vercel.app
+PROFESSIONAL SUMMARY
+Results-driven Security & AI professional with 12+ years of hands-on SOC and physical security experience across Tier-III critical data centres and Fortune-500 client sites. Currently enhancing AI capabilities through the Applied AI & ML Essentials programme at IIT Patna (Vishlesan i-Hub). Uniquely positioned to bridge traditional security operations — CCTV surveillance, access control, incident response — with Python-based anomaly detection, ML-driven threat analytics, and AI automation. Seeking AI-augmented SOC or Security Data Analyst roles where domain expertise and machine learning skills combine to deliver smarter threat intelligence.
+CORE SKILLS
+Security Ops	SOC Operations, CCTV Surveillance (100+ feeds, Milestone X-Protect), Incident Response, Access Control (Solus), Threat Escalation, Compliance Reporting
+AI / Python	Python, Pandas, NumPy, Scikit-Learn, Isolation Forest, Logistic Regression, Streamlit, Flask, Jupyter Notebooks
+ML / Data	Anomaly Detection, EDA, Feature Engineering, Log Analysis, Pattern Recognition, Data Visualisation (Plotly, Matplotlib)
+AI Tools	LangChain, FAISS, RAG Pipelines, Google AI Studio, Advanced Prompt Engineering, GitHub Copilot
+Soft Skills	Shift Leadership, Emergency Response, Vendor Coordination, Documentation, Cross-team Communication
+PROFESSIONAL EXPERIENCE
+Security Operations Officer (DGR)  |  AP Securitas Pvt. Ltd. — Godrej IT Park, Mumbai	Oct 2025 – Present
+▪	Enforce strict access-control and surveillance protocols across a high-footfall corporate IT park environment.
+▪	Concurrently applying ML concepts (IIT Patna programme) to identify access anomalies and security incident patterns.
+▪	Developing Python automation scripts to flag unusual access-log patterns, reducing manual review time.
+SOC Operator & Security Supervisor  |  SIS Security — NTT Global Data Centre (Tier-III), Mumbai	2022 – 2025
+▪	Operated 24/7 SOC using Milestone X-Protect, overseeing 100+ live surveillance feeds in a critical data centre.
+▪	Managed real-time incident response, vendor coordination, access-log auditing, and security alert escalation.
+▪	Optimised Solus access-control workflows, achieving 30% reduction in unauthorised access violations and 100% system uptime.
+▪	Identified recurring intrusion attempt patterns through manual log analysis — process now enhanced with Python anomaly detection.
+Operations Supervisor — MEP Infrastructure  |  MSRDC Undertaking — Mulund LBS Toll Plaza, Mumbai	Sept 2020 – 2022
+▪	Managed daily workflows, monitored team productivity, and ensured compliance reporting for large-scale toll-plaza operations.
+▪	Coordinated with MEP vendors; maintained zero-downtime SLA across critical infrastructure.
+Corporate Security Guard & Team Lead  |  SIS Security / NISA — Accenture, TCL, MCX	2016 – 2020
+▪	Delivered comprehensive security services for Tier-1 clients at Accenture (Airoli), TCL (Lower Parel), and Multi Commodity Exchange.
+▪	Led CCTV audits, access-point management, and emergency evacuation drills — achieving zero-incident compliance record.
+TECHNICAL PROJECTS
+Security Log Anomaly Detection System  —  Python · Pandas · Scikit-Learn · Isolation Forest · Streamlit
+▪	Analysed 50,000+ access-log records to detect suspicious login patterns using unsupervised ML (Isolation Forest).
+▪	Flagged 12 confirmed anomalous patterns matching real security incidents; delivered interactive Streamlit dashboard for SOC use.
+▪	Reduced manual log review effort significantly by automating pattern classification and alert generation.
+AI Content Creator — RAG Pipeline  —  Python · LangChain · FAISS · Qwen 2.5 · Jupyter
+▪	Built a fully local RAG pipeline for context-aware educational queries; no external API dependency for privacy-sensitive data.
+▪	Integrated FAISS vector store with LangChain retrieval chain to deliver accurate, grounded responses from custom document sets.
+BankBeES Stock Price Predictor  —  Python · Random Forest · Pandas · Scikit-Learn
+▪	Trained a Random Forest regression model to predict Nifty Bank BeES ETF daily closing prices using historical market data.
+▪	Performed feature engineering on OHLCV data; evaluated model accuracy with RMSE and visual trend comparison.
+Data Privacy & PII Detection System  —  Python · Pandas · Logistic Regression · Scikit-Learn
+▪	Classified enterprise datasets for 7 types of PII (Aadhaar, PAN, Email, Phone, etc.) to support GDPR/DPDP compliance audits.
+▪	Achieved measurable accuracy using Logistic Regression classifier with EDA-driven feature selection.
+GDP Data Dashboard  —  Python · Streamlit · Plotly · Pandas
+▪	Built interactive dashboard visualising GDP trends across countries using Plotly — live-deployed on Streamlit Cloud.
+EDUCATION & CERTIFICATIONS
+EDUCATION
+Applied AI & ML Essentials — IIT Patna (Vishlesan i-Hub)
+2025 – 2026
+N.C.V.T. Fitter — Siemens Ltd., Thane  (73.46%)
+I.T.I. Fitter — I.T.I. Mulund, Mumbai  (73.15%)
+H.S.C. & S.S.C. — Mumbai Board  |  2010 & 2008	CERTIFICATIONS
+Basic Security Operations — NISA Security
+Fire Safety & Emergency Response — SIS
+First Aid Training — TSDC Siemens Ltd.
+CNC Lathe Programming — Mulund ITI
+ADDITIONAL INFORMATION
+Languages: English, Hindi, Marathi (Fluent)     Location: Thane, Mumbai — Open to Relocation     Interests: AI in Cybersecurity, Threat Intelligence, Anomaly Detection, Emerging Security Technologies
