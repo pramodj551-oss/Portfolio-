@@ -13,8 +13,8 @@
 | What you want | Where to go |
 |---|---|
 | 👀 See my live portfolio | **[Open Portfolio Website](https://pramodjadhav.vercel.app/)** |
-| 📄 Download my resume | **[Download Resume](https://raw.githubusercontent.com/pramodj551-oss/Portfolio-/main/resume/Pramod_Jadhav_Resume_2026.docx)** |
-| 📄 View resume on GitHub | **[View Resume on GitHub](https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_Resume_2026.docx)** |
+| 📄 Download my resume | **[Download Resume](https://raw.githubusercontent.com/pramodj551-oss/Pramod-Prakash-Jadhav/main/resume/Pramod_Prakash_Jadhav_Resume.docx?utm_source=chatgpt.com)** |
+| 📄 View resume on GitHub | **[View Resume on GitHub](https://github.com/pramodj551-oss/Pramod-Prakash-Jadhav/blob/main/resume/Pramod_Prakash_Jadhav_Resume.docx?utm_source=chatgpt.com)** |
 | 🔍 Review project work | **[View GitHub Projects](https://github.com/pramodj551-oss?tab=repositories)** |
 | 📞 Get in touch | **pramodj551@gmail.com** |
 
