@@ -13,7 +13,7 @@
 | What you want | Where to go |
 |---|---|
 | 👀 See my live portfolio | **[Open Portfolio Website](https://portfolio-eta-ashen-pxpaf816ec.vercel.app/)** |
-| 📄 Download my resume | **[Download Resume](https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_Resume_2026.docx?raw=1)** |
+| 📄 Download my resume | **[Download Resume](https://raw.githubusercontent.com/pramodj551-oss/Portfolio-/main/resume/Pramod_Jadhav_Resume_2026.docx)** |
 | 📄 View resume on GitHub | **[View Resume on GitHub](https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_Resume_2026.docx)** |
 | 🔍 Review project work | **[View GitHub Projects](https://github.com/pramodj551-oss?tab=repositories)** |
 | 📞 Get in touch | **pramod.j551@gmail.com** |
