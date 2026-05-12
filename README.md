@@ -13,9 +13,12 @@
 | What you want | Where to go |
 |---|---|
 | 👀 See my live portfolio | **[Open Portfolio Website](https://portfolio-eta-ashen-pxpaf816ec.vercel.app/)** |
-| 📄 Download my resume | **[Pramod_Jadhav_ATS_Resume_2026.docx](./resume/Pramod_Jadhav_ATS_Resume_2026.docx)** |
-| 🔍 Review project work | **[Project Documentation](./docs/PROJECT_DOCUMENTATION.md)** |
+| 📄 Download my resume | **[Download Resume from Google Drive](YOUR_GOOGLE_DRIVE_RESUME_LINK_HERE)** |
+| 📄 Alternative resume link | **[View Resume on GitHub](https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_ATS_Resume_2026.docx)** |
+| 🔍 Review project work | **[View GitHub Projects](https://github.com/pramodj551-oss?tab=repositories)** |
 | 📞 Get in touch | **pramod.j551@gmail.com** |
+
+> **Important:** Replace `YOUR_GOOGLE_DRIVE_RESUME_LINK_HERE` with a publicly shareable Google Drive link to your resume. This is the most reliable way to ensure recruiters can download it directly.
 
 ---
 
@@ -33,113 +36,44 @@
 
 ---
 
-## 📦 What's in This Repository
+## 🔑 Featured Projects
+
+### 🔐 Security Log Anomaly Detection
+**Stack:** Python · Scikit-Learn · Isolation Forest · Streamlit
+
+📁 [View Repository →](https://github.com/pramodj551-oss/security-log-anomaly-detection)
+
+### 🤖 AI Content Creator — RAG Pipeline
+**Stack:** Python · LangChain · FAISS · Qwen 2.5
+
+📁 [View Repository →](https://github.com/pramodj551-oss/AI-Content-Creator-RAG)
+
+### 📈 BankBeES ETF Stock Predictor
+**Stack:** Python · Random Forest · Financial Analytics
+
+📁 [View Repository →](https://github.com/pramodj551-oss/BankBeES-Stock-Predictor)
+
+### 🌍 GDP Dashboard
+**Stack:** Python · Streamlit · Plotly
+
+📁 [View Repository →](https://github.com/pramodj551-oss/gdp-dashboard)
+
+### 🌐 Personal Portfolio Website
+**Stack:** JavaScript · React · Next.js
+
+📁 [View Repository →](https://github.com/pramodj551-oss/ai-portfolio)
+
+---
+
+## 💡 Why This Combination Is Rare
 
 ```text
-Portfolio-/
-├── README.md
-├── resume/
-│   └── Pramod_Jadhav_ATS_Resume_2026.docx
-├── portfolio/
-│   └── portfolio-enhanced.html
-├── projects/
-│   ├── login-anomaly-detection/
-│   ├── log-analysis-automation/
-│   └── incident-response-dashboard/
-└── docs/
-    ├── PROJECT_DOCUMENTATION.md
-    ├── DEPLOYMENT_GUIDE.md
-    ├── 30DAY_LEARNING_ROADMAP.md
-    └── RECRUITER_OPTIMIZATION_GUIDE.md
-
-
----
-
-🔑 Featured Projects
-
-1. 🔐 Login Anomaly Detection System
-
-Stack: Python · TensorFlow/Keras · Flask · Streamlit · Plotly
-
-A production-grade anomaly detection pipeline for SOC login event data.
-
-Models: Stacked Autoencoder · LSTM Autoencoder · Variational Autoencoder (VAE)
-
-Hyperparameter tuning with Keras Tuner
-
-Flask REST API for real-time inference
-
-Streamlit dashboard for SOC analysts
-
-Result: 92% precision, 40% analyst review time saved
-
-
-📁 View Project →
-
-
----
-
-2. 📋 Log Analysis Automation Tool
-
-Stack: Python · Pandas · Regex · Matplotlib
-
-Automated weekly log reporting and reduced manual effort significantly.
-
-Parses SIEM log exports
-
-Generates reports in minutes
-
-Saves 200+ hours/year
-
-Exports CSV reports and charts
-
-
-📁 View Project →
-
-
----
-
-3. 📈 Incident Response Dashboard
-
-Stack: Python · Plotly · Streamlit
-
-Interactive SOC metrics dashboard.
-
-Incident trends by severity
-
-Analyst workload tracking
-
-MTTD / MTTR monitoring
-
-Decision-support views
-
-
-📁 View Project →
-
-
----
-
-💡 Why This Combination Is Rare
-
 Most data analysts:    Python skills  ×  Limited security domain experience
 Most SOC analysts:     Security depth ×  Limited Python / ML skills
 
 Me:                    12+ yrs SOC + Python / ML (actively building)
 
 A security expert who can build data and AI-driven solutions.
-
-
----
-
-📚 Included Documentation
-
-File	Description
-
-PROJECT_DOCUMENTATION.md	Full project write-ups and interview talking points
-30DAY_LEARNING_ROADMAP.md	Structured learning plan
-RECRUITER_OPTIMIZATION_GUIDE.md	LinkedIn and interview preparation
-DEPLOYMENT_GUIDE.md	Hosting and deployment instructions
-
 
 
 ---
@@ -157,11 +91,9 @@ I'm actively seeking roles where cybersecurity expertise meets data and AI.
 🌐 Portfolio: https://portfolio-eta-ashen-pxpaf816ec.vercel.app/
 
 
-If you find a broken link, please open an issue: https://github.com/pramodj551-oss/Portfolio-/issues
-
 
 ---
 
-Package Version: 2.1
+Package Version: 2.3
 Last Updated: May 2026
 Status: Active
