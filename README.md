@@ -100,7 +100,7 @@ Resource	Link
 
 GitHub Repositories	https://github.com/pramodj551-oss?tab=repositories
 LinkedIn Profile	https://www.linkedin.com/in/pramod-prakash-jadhav-42ba2281
-Live Portfolio	https://portfolio-eta-ashen-pxpaf816ec.vercel.app/
+Live Portfolio	https://pramodjadhav.vercel.app/
 Resume Download	https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_Resume_2026.docx?raw=1
 
 
