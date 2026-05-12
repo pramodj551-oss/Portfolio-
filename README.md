@@ -13,12 +13,10 @@
 | What you want | Where to go |
 |---|---|
 | 👀 See my live portfolio | **[Open Portfolio Website](https://portfolio-eta-ashen-pxpaf816ec.vercel.app/)** |
-| 📄 Download my resume | **[Download Resume from Google Drive](YOUR_GOOGLE_DRIVE_RESUME_LINK_HERE)** |
-| 📄 Alternative resume link | **[View Resume on GitHub](https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_ATS_Resume_2026.docx)** |
+| 📄 Download my resume | **[Download Resume](https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_Resume_2026.docx?raw=1)** |
+| 📄 View resume on GitHub | **[View Resume on GitHub](https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_Resume_2026.docx)** |
 | 🔍 Review project work | **[View GitHub Projects](https://github.com/pramodj551-oss?tab=repositories)** |
 | 📞 Get in touch | **pramod.j551@gmail.com** |
-
-> **Important:** Replace `YOUR_GOOGLE_DRIVE_RESUME_LINK_HERE` with a publicly shareable Google Drive link to your resume. This is the most reliable way to ensure recruiters can download it directly.
 
 ---
 
@@ -41,25 +39,43 @@
 ### 🔐 Security Log Anomaly Detection
 **Stack:** Python · Scikit-Learn · Isolation Forest · Streamlit
 
+Detects suspicious login behavior in enterprise access logs using unsupervised machine learning.
+
 📁 [View Repository →](https://github.com/pramodj551-oss/security-log-anomaly-detection)
+
+---
 
 ### 🤖 AI Content Creator — RAG Pipeline
 **Stack:** Python · LangChain · FAISS · Qwen 2.5
 
+Local Retrieval-Augmented Generation (RAG) pipeline for context-aware educational queries.
+
 📁 [View Repository →](https://github.com/pramodj551-oss/AI-Content-Creator-RAG)
 
+---
+
 ### 📈 BankBeES ETF Stock Predictor
-**Stack:** Python · Random Forest · Financial Analytics
+**Stack:** Python · Pandas · Scikit-Learn · Random Forest
+
+Machine learning model predicting Nifty Bank BeES ETF closing prices.
 
 📁 [View Repository →](https://github.com/pramodj551-oss/BankBeES-Stock-Predictor)
+
+---
 
 ### 🌍 GDP Dashboard
 **Stack:** Python · Streamlit · Plotly
 
+Interactive dashboard for analyzing global GDP trends.
+
 📁 [View Repository →](https://github.com/pramodj551-oss/gdp-dashboard)
+
+---
 
 ### 🌐 Personal Portfolio Website
 **Stack:** JavaScript · React · Next.js
+
+Responsive portfolio website showcasing projects and skills.
 
 📁 [View Repository →](https://github.com/pramodj551-oss/ai-portfolio)
 
@@ -74,6 +90,19 @@ Most SOC analysts:     Security depth ×  Limited Python / ML skills
 Me:                    12+ yrs SOC + Python / ML (actively building)
 
 A security expert who can build data and AI-driven solutions.
+
+
+---
+
+📚 Quick Links
+
+Resource	Link
+
+GitHub Repositories	https://github.com/pramodj551-oss?tab=repositories
+LinkedIn Profile	https://www.linkedin.com/in/pramod-prakash-jadhav-42ba2281
+Live Portfolio	https://portfolio-eta-ashen-pxpaf816ec.vercel.app/
+Resume Download	https://github.com/pramodj551-oss/Portfolio-/blob/main/resume/Pramod_Jadhav_Resume_2026.docx?raw=1
+
 
 
 ---
@@ -94,6 +123,6 @@ I'm actively seeking roles where cybersecurity expertise meets data and AI.
 
 ---
 
-Package Version: 2.3
+Package Version: 2.4
 Last Updated: May 2026
 Status: Active
