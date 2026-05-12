@@ -1,0 +1,213 @@
+PRAMOD PRAKASH JADHAV
+AI-Augmented SOC Analyst | Security Operations | Python & Machine Learning for Cybersecurity
+
+Location: Thane, Mumbai, India
+Phone: +91 88504 27883
+Email: pramodj551@gmail.com
+LinkedIn: https://www.linkedin.com/in/pramod-prakash-jadhav-42ba2281
+GitHub: https://github.com/pramodj551-oss
+Portfolio: https://pramodjadhav.vercel.app
+
+====================================================================
+PROFESSIONAL SUMMARY
+====================================================================
+
+Results-driven Security & AI professional with 12+ years of hands-on
+SOC and physical security experience across Tier-III critical data
+centres and Fortune 500 client sites. Currently enhancing AI
+capabilities through the Applied AI & ML Essentials programme at IIT
+Patna (Vishlesan i-Hub).
+
+Uniquely positioned to bridge traditional security operations —
+CCTV surveillance, access control, and incident response — with
+Python-based anomaly detection, machine learning-driven threat
+analytics, and AI automation.
+
+Seeking AI-Augmented SOC Analyst, Security Data Analyst, or
+Cybersecurity Analyst roles where domain expertise and machine
+learning skills combine to deliver smarter threat intelligence.
+
+====================================================================
+CORE SKILLS
+====================================================================
+
+Security Operations:
+- SOC Operations
+- CCTV Surveillance (100+ feeds, Milestone X-Protect)
+- Incident Response
+- Access Control (Solus)
+- Threat Escalation
+- Compliance Reporting
+
+AI / Python:
+- Python
+- Pandas
+- NumPy
+- Scikit-Learn
+- Isolation Forest
+- Logistic Regression
+- Streamlit
+- Flask
+- Jupyter Notebooks
+
+Machine Learning / Data:
+- Anomaly Detection
+- Exploratory Data Analysis (EDA)
+- Feature Engineering
+- Log Analysis
+- Pattern Recognition
+- Data Visualization (Plotly, Matplotlib)
+
+Generative AI / LLM Tools:
+- LangChain
+- FAISS
+- Retrieval-Augmented Generation (RAG)
+- Google AI Studio
+- Prompt Engineering
+- GitHub Copilot
+
+Soft Skills:
+- Shift Leadership
+- Emergency Response
+- Vendor Coordination
+- Documentation
+- Cross-Team Communication
+
+====================================================================
+PROFESSIONAL EXPERIENCE
+====================================================================
+
+Security Operations Officer (DGR)
+AP Securitas Pvt. Ltd. — Godrej IT Park, Mumbai
+Oct 2025 – Present
+
+- Enforce strict access-control and surveillance protocols across a
+  high-footfall corporate IT park environment.
+- Apply machine learning concepts to identify access anomalies and
+  security incident patterns.
+- Develop Python automation scripts to flag unusual access-log
+  patterns and reduce manual review time.
+
+SOC Operator & Security Supervisor
+SIS Security — NTT Global Data Centre (Tier-III), Mumbai
+2022 – 2025
+
+- Operated a 24/7 Security Operations Center using Milestone
+  X-Protect, overseeing 100+ live surveillance feeds.
+- Managed real-time incident response, vendor coordination,
+  access-log auditing, and security alert escalation.
+- Optimized Solus access-control workflows, reducing unauthorized
+  access violations by 30% while maintaining 100% system uptime.
+- Identified recurring intrusion patterns through manual log
+  analysis, later enhanced using Python anomaly detection.
+
+Operations Supervisor — MEP Infrastructure
+MSRDC Undertaking — Mulund LBS Toll Plaza, Mumbai
+Sept 2020 – 2022
+
+- Managed daily workflows and monitored team productivity.
+- Ensured compliance reporting and coordinated with MEP vendors.
+- Maintained zero-downtime SLA across critical infrastructure.
+
+Corporate Security Guard & Team Lead
+SIS Security / NISA — Accenture, TCL, MCX
+2016 – 2020
+
+- Delivered comprehensive security services for major corporate
+  clients including Accenture, TCL, and Multi Commodity Exchange.
+- Led CCTV audits, access-point management, and emergency
+  evacuation drills.
+- Maintained a zero-incident compliance record.
+
+====================================================================
+TECHNICAL PROJECTS
+====================================================================
+
+Security Log Anomaly Detection System
+Technologies: Python, Pandas, Scikit-Learn, Isolation Forest, Streamlit
+
+- Analyzed 50,000+ access-log records to detect suspicious login
+  patterns using unsupervised machine learning.
+- Flagged 12 confirmed anomalous patterns matching real security
+  incidents.
+- Built an interactive Streamlit dashboard for SOC analysts.
+- Significantly reduced manual log review effort.
+
+AI Content Creator — RAG Pipeline
+Technologies: Python, LangChain, FAISS, Qwen 2.5, Jupyter
+
+- Built a fully local Retrieval-Augmented Generation (RAG)
+  pipeline for privacy-sensitive educational queries.
+- Integrated FAISS vector search with LangChain retrieval.
+
+BankBeES Stock Price Predictor
+Technologies: Python, Random Forest, Pandas, Scikit-Learn
+
+- Trained a Random Forest regression model to predict daily
+  closing prices for Bank Nifty BeES ETF.
+- Performed feature engineering on OHLCV market data.
+- Evaluated performance using RMSE and trend comparison.
+
+Data Privacy & PII Detection System
+Technologies: Python, Pandas, Logistic Regression, Scikit-Learn
+
+- Classified enterprise datasets for seven types of Personally
+  Identifiable Information (PII).
+- Supported GDPR and DPDP compliance audits.
+- Achieved strong predictive accuracy through EDA-driven
+  feature selection.
+
+GDP Data Dashboard
+Technologies: Python, Streamlit, Plotly, Pandas
+
+- Built an interactive dashboard to visualize GDP trends
+  across countries.
+- Deployed live on Streamlit Cloud.
+
+====================================================================
+EDUCATION
+====================================================================
+
+Applied AI & ML Essentials
+Indian Institute of Technology Patna (Vishlesan i-Hub)
+2025 – 2026
+
+NCVT Fitter
+Siemens Ltd., Thane
+Score: 73.46%
+
+ITI Fitter
+ITI Mulund, Mumbai
+Score: 73.15%
+
+HSC and SSC
+Mumbai Board
+Years: 2010 and 2008
+
+====================================================================
+CERTIFICATIONS
+====================================================================
+
+- Basic Security Operations — NISA Security
+- Fire Safety & Emergency Response — SIS
+- First Aid Training — TSDC Siemens Ltd.
+- CNC Lathe Programming — Mulund ITI
+
+====================================================================
+ADDITIONAL INFORMATION
+====================================================================
+
+Languages:
+- English
+- Hindi
+- Marathi
+
+Location:
+- Thane, Mumbai, India
+- Open to Relocation
+
+Interests:
+- AI in Cybersecurity
+- Threat Intelligence
+- Anomaly Detection
+- Emerging Security Technologies
