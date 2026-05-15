@@ -16,7 +16,7 @@
 | 📄 Download Resume (PDF) | **[Download Resume PDF](https://raw.githubusercontent.com/pramodj551-oss/Pramod-Prakash-Jadhav/main/resume/Pramod_Prakash_Jadhav_Resume.pdf)** |
 | 📄 View Resume PDF on GitHub | **[View Resume PDF](https://github.com/pramodj551-oss/Pramod-Prakash-Jadhav/blob/main/resume/Pramod_Prakash_Jadhav_Resume.pdf)** |
 | 📄 Download Resume (DOCX) | **[Download Resume DOCX](https://raw.githubusercontent.com/pramodj551-oss/Pramod-Prakash-Jadhav/main/resume/Pramod_Prakash_Jadhav_Resume.docx)** |
-| 📄 View Resume DOCX on GitHub | **[View Resume DOCX](https://github.com/pramodj551-oss/Pramod-Prakash-Jadhav/blob/main/resume/Pramod_Prakash_Jadhav_Resume.docx)** |
+| 📄 View Resume DOCX on GitHub | **[View Resume DOCX](https://github.com/pramodj551-oss/Pramod-Prakash-Jadhav/main/resume/Pramod_Prakash_Jadhav_Resume.docx)** |
 | 🔍 Review Project Work | **[View GitHub Projects](https://github.com/pramodj551-oss?tab=repositories)** |
 | 📞 Get in Touch | **pramodj551@gmail.com** |
 
@@ -75,7 +75,7 @@ Interactive dashboard for analyzing global GDP trends.
 ---
 
 ### 🌐 Personal Portfolio Website
-**Stack:** JavaScript · React · Next.js
+**Stack:** HTML · CSS · JavaScript
 
 Responsive portfolio website showcasing projects and skills.
 
